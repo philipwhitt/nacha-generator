@@ -13,7 +13,7 @@ class BatchFooterTest extends \PHPUnit_Framework_TestCase {
 			->setTotalDebitAmount('4000')
 			->setTotalCreditAmount('95000')
 			->setCompanyIdNumber('1419871234')
-			->setOriginatingDfiIdentification('09991234')
+			->setOriginatingDfiId('09991234')
 			->setBatchNumber(1);
 
 		$this->assertEquals(94, strlen($batchFooter));
@@ -26,7 +26,7 @@ class BatchFooterTest extends \PHPUnit_Framework_TestCase {
 			->setServiceClassCode(200)
 			->setEntryHash('9101298')
 			->setCompanyIdNumber('1419871234')
-			->setOriginatingDfiIdentification('09991234')
+			->setOriginatingDfiId('09991234')
 			->setBatchNumber(1);
 
 		$this->assertEquals(94, strlen($batchFooter));

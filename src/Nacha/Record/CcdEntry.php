@@ -26,6 +26,40 @@ class CcdEntry {
 		$this->setDiscretionaryData('');
 	}
 
+	public function getRecordTypeCode() {
+		return $this->recordTypeCode;
+	}
+	public function getTransactionCode() {
+		return $this->transactionCode;
+	}
+	public function getReceivingDfiId() {
+		return $this->receivingDfiId;
+	}
+	public function getCheckDigit() {
+		return $this->checkDigit;
+	}
+	public function getReceivingDFiAccountNumber() {
+		return $this->receivingDFiAccountNumber;
+	}
+	public function getAmount() {
+		return $this->amount;
+	}
+	public function getReceivingCompanyId() {
+		return $this->receivingCompanyId;
+	}
+	public function getReceivingCompanyName() {
+		return $this->receivingCompanyName;
+	}
+	public function getDiscretionaryData() {
+		return $this->discretionaryData;
+	}
+	public function getAddendaRecordIndicator() {
+		return $this->addendaRecordIndicator;
+	}
+	public function getTraceNumber() {
+		return $this->traceNumber;
+	}
+
 	public function setRecordTypeCode($recordTypeCode) {
 		$this->recordTypeCode = new Number($recordTypeCode, 1);
 		return $this;

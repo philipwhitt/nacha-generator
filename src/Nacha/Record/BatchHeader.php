@@ -33,6 +33,43 @@ class BatchHeader {
 		$this->setCompanyDescriptiveDate('');
 	}
 
+	public function getServiceClassCode() {
+		return $this->serviceClassCode;
+	}
+	public function getCompanyName() {
+		return $this->companyName;
+	}
+	public function getCompanyDiscretionaryData() {
+		return $this->companyDiscretionaryData;
+	}
+	public function getCompanyId() {
+		return $this->companyId;
+	}
+	public function getStandardEntryClassCode() {
+		return $this->standardEntryClassCode;
+	}
+	public function getEntryDescription() {
+		return $this->entryDescription;
+	}
+	public function getCompanyDescriptiveDate() {
+		return $this->companyDescriptiveDate;
+	}
+	public function getEffectiveEntryDate() {
+		return $this->effectiveEntryDate;
+	}
+	public function getSettlementDate() {
+		return $this->settlementDate;
+	}
+	public function getOriginatorStatusCode() {
+		return $this->originatorStatusCode;
+	}
+	public function getOriginatingDFiId() {
+		return $this->originatingDFiId;
+	}
+	public function getBatchNumber() {
+		return $this->batchNumber;
+	}
+
 	public function setServiceClassCode($serviceClassCode) {
 		$this->serviceClassCode = new Number($serviceClassCode, 3);
 		return $this;

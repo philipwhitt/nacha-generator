@@ -26,6 +26,40 @@ class DebitEntry {
 		$this->setDiscretionaryData('');
 	}
 
+	public function getRecordTypeCode() {
+		return $this->recordTypeCode;
+	}
+	public function getTransactionCode() {
+		return $this->transactionCode;
+	}
+	public function getReceivingDfiId() {
+		return $this->receivingDfiId;
+	}
+	public function getCheckDigit() {
+		return $this->checkDigit;
+	}
+	public function getDFiAccountNumber() {
+		return $this->dFiAccountNumber;
+	}
+	public function getAmount() {
+		return $this->amount;
+	}
+	public function getIndividualId() {
+		return $this->individualId;
+	}
+	public function getIdividualName() {
+		return $this->idividualName;
+	}
+	public function getDiscretionaryData() {
+		return $this->discretionaryData;
+	}
+	public function getAddendaRecordIndicator() {
+		return $this->addendaRecordIndicator;
+	}
+	public function getTraceNumber() {
+		return $this->traceNumber;
+	}
+
 	public function setRecordTypeCode($recordTypeCode) {
 		$this->recordTypeCode = new Number($recordTypeCode, 1);
 		return $this;

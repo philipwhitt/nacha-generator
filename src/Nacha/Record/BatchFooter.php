@@ -16,7 +16,7 @@ class BatchFooter {
 	private $companyIdNumber;
 	private $messageAuthenticationCode;
 	private $reserved;
-	private $originatingDfiIdentification;
+	private $originatingDfiId;
 	private $batchNumber;
 
 	public function __construct() {
@@ -56,8 +56,8 @@ class BatchFooter {
 		$this->messageAuthenticationCode = new String($messageAuthenticationCode, 19);
 		return $this;
 	}
-	public function setOriginatingDfiIdentification($originatingDfiIdentification) {
-		$this->originatingDfiIdentification = new Number($originatingDfiIdentification, 8);
+	public function setOriginatingDfiId($originatingDfiId) {
+		$this->originatingDfiId = new Number($originatingDfiId, 8);
 		return $this;
 	}
 	public function setBatchNumber($batchNumber) {
@@ -75,7 +75,7 @@ class BatchFooter {
 			$this->companyIdNumber.
 			$this->messageAuthenticationCode.
 			$this->reserved.
-			$this->originatingDfiIdentification.
+			$this->originatingDfiId.
 			$this->batchNumber;
 	}
 
