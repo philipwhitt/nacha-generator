@@ -1,0 +1,18 @@
+{
+	"name": "nacha/generator",
+	"require": {
+	},
+	"require-dev": {
+		"phpunit/phpunit" : "4.5.*"
+	},
+	"autoload": {
+		"psr-0": {
+			"Nacha" : "src"
+		}
+	},
+	"autoload-dev": {
+		"psr-0": {
+			"Nacha" : "test"
+		}
+	}
+}
