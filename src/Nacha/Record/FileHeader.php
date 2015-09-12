@@ -1,6 +1,6 @@
 <?php
 
-namespace Nacha;
+namespace Nacha\Record;
 
 use Nacha\Field\String;
 use Nacha\Field\Number;
@@ -31,12 +31,12 @@ class FileHeader {
 		$this->setFormatCode(1);
 		$this->setFileIdModifier('A');
 		$this->setFileCreationDate(date('ymd', time()));
-		$this->setFileCreationTime(date('Hi', time()));
 
 		// optional
 		$this->setImmediateDestinationName('');
 		$this->setImmediateOriginName('');
 		$this->setReferenceCode('');
+		$this->setFileCreationTime('');
 	}
 
 	public function setRecordTypeCode($recordTypeCode) {

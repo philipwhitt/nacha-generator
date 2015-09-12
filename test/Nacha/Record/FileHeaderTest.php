@@ -1,6 +1,6 @@
 <?php
 
-namespace Nacha;
+namespace Nacha\Record;
 
 class FileHeaderTest extends \PHPUnit_Framework_TestCase {
 
@@ -31,7 +31,7 @@ class FileHeaderTest extends \PHPUnit_Framework_TestCase {
 			->setFormatCode('1');
 
 		$this->assertEquals(94, strlen($fileHeader));
-		$this->assertEquals('101 051000033 0599999970602101323A094101                                                      ', (string)$fileHeader);
+		$this->assertEquals('101 051000033 059999997060210    A094101                                                      ', (string)$fileHeader);
 	}
 
 }

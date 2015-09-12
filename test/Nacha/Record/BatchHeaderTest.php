@@ -1,8 +1,8 @@
 <?php
 
-namespace Nacha;
+namespace Nacha\Record;
 
-class FileHeaderTest extends \PHPUnit_Framework_TestCase {
+class BatchHeaderTest extends \PHPUnit_Framework_TestCase {
 
 	public function testBatchHeader_AllFields() {
 		// given

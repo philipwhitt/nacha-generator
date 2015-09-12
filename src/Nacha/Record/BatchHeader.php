@@ -1,6 +1,6 @@
 <?php
 
-namespace Nacha;
+namespace Nacha\Record;
 
 use Nacha\Field\String;
 use Nacha\Field\Number;
