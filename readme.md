@@ -7,7 +7,7 @@ Based on documentation from NACHA:
 https://www.nacha.org/system/files/resources/AAP201%20-%20ACH%20File%20Formatting.pdf
 
 
-h3.Install With Composer
+###Install With Composer
 ```
 {
 	"require" : {
@@ -16,9 +16,9 @@ h3.Install With Composer
 }
 ```
 
-h3.Usage
+###Usage
 
-h3.Tests
+###Tests
 ```
 $ ./vendor/bin/phpunit -c test/ci.xml
 ```
