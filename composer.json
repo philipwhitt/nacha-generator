@@ -1,5 +1,6 @@
 {
 	"name": "nacha/generator",
+	"description" : "Easy to use ACH file generation for PPD/CCD transactions. Modeled using NACHA documentation.",
 	"require": {
 	},
 	"require-dev": {
