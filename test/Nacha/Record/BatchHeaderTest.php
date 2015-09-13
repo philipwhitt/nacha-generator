@@ -2,6 +2,8 @@
 
 namespace Nacha\Record;
 
+use Nacha\Field\StandardEntryClass;
+
 class BatchHeaderTest extends \PHPUnit_Framework_TestCase {
 
 	public function testBatchHeader_AllFields() {
@@ -11,7 +13,7 @@ class BatchHeaderTest extends \PHPUnit_Framework_TestCase {
 			->setCompanyName('MY BEST COMP')
 			->setCompanyDiscretionaryData('INCLUDES OVERTIME')
 			->setCompanyId('1419871234')
-			->setStandardEntryClassCode('PPD')
+			->setStandardEntryClassCode(StandardEntryClass::PPD)
 			->setCompanyEntryDescription('PAYROLL')
 			->setCompanyDescriptiveDate('0602')
 			->setEffectiveEntryDate('0112')
@@ -29,7 +31,7 @@ class BatchHeaderTest extends \PHPUnit_Framework_TestCase {
 			->setServiceClassCode(200)
 			->setCompanyName('MY BEST COMP')
 			->setCompanyId('1419871234')
-			->setStandardEntryClassCode('PPD')
+			->setStandardEntryClassCode(StandardEntryClass::PPD)
 			->setCompanyEntryDescription('PAYROLL')
 			->setEffectiveEntryDate('0112')
 			->setOriginatorStatusCode('2')
