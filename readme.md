@@ -65,3 +65,5 @@ Other missing elements:
 - Notification of Change Entry (COR)
 - Return entries
 
+Support for the above elements should be rather easy to implement, as the models were built with them in mind. Put in a pull request if you have an immediate need for one of the above features.
+
