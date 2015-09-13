@@ -6,7 +6,7 @@ NACHA File Generator
 Based on documentation from NACHA:
 https://www.nacha.org/system/files/resources/AAP201%20-%20ACH%20File%20Formatting.pdf
 
-Currently, there is no validation for field inputs. Strings that are too long will be truncated. Required/mandatory are currently not enforced.
+Currently, there is no validation for field inputs. Strings that are too long will be truncated. Required/mandatory fields are currently not enforced.
 
 ###Install With Composer
 ```
