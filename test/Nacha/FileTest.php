@@ -5,10 +5,10 @@ namespace Nacha;
 use Nacha\Record\DebitEntry;
 use Nacha\Record\CcdEntry;
 
-class FileGeneratorTest extends \PHPUnit_Framework_TestCase {
+class FileTest extends \PHPUnit_Framework_TestCase {
 
 	public function setup() {
-		$this->file = new FileGenerator();
+		$this->file = new File();
 		$this->file->getHeader()->setPriorityCode(1)
 			->setImmediateDestination('051000033')
 			->setImmediateOrigin('059999997')

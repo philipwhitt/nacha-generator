@@ -6,7 +6,7 @@ use Nacha\Record\Block;
 use Nacha\Record\FileHeader;
 use Nacha\Record\FileFooter;
 
-class FileGenerator {
+class File {
 
 	private $header;
 	private $batches = [];
