@@ -35,7 +35,7 @@ class FileTest extends \PHPUnit_Framework_TestCase {
 		$batchA = $this->getBatch();
 
 		$batchB = $this->getBatch();
-		$batchB->getHeader()->setEntryDescription('EXPENSES');
+		$batchB->getHeader()->setCompanyEntryDescription('EXPENSES');
 
 		// when
 		$this->file->addBatch($batchA);
@@ -70,7 +70,7 @@ class FileTest extends \PHPUnit_Framework_TestCase {
 	public function testBlockWithEntries() {
 		// given
 		$batchA = $this->getBatch();
-		$batchA->getHeader()->setEntryDescription('EXPENSES');
+		$batchA->getHeader()->setCompanyEntryDescription('EXPENSES');
 		$batchA->addDebitEntry((new DebitEntry)
 			->setRecordTypeCode(6)
 			->setTransactionCode(27)
@@ -119,7 +119,7 @@ class FileTest extends \PHPUnit_Framework_TestCase {
 			->setCompanyDiscretionaryData('INCLUDES OVERTIME')
 			->setCompanyId('1419871234')
 			->setStandardEntryClassCode('PPD')
-			->setEntryDescription('PAYROLL')
+			->setCompanyEntryDescription('PAYROLL')
 			->setCompanyDescriptiveDate('0602')
 			->setEffectiveEntryDate('0112')
 			->setOriginatorStatusCode('2')

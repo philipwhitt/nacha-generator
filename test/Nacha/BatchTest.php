@@ -14,7 +14,7 @@ class BatchTest extends \PHPUnit_Framework_TestCase {
 			->setCompanyDiscretionaryData('INCLUDES OVERTIME')
 			->setCompanyId('1419871234')
 			->setStandardEntryClassCode('PPD')
-			->setEntryDescription('PAYROLL')
+			->setCompanyEntryDescription('PAYROLL')
 			->setCompanyDescriptiveDate('0602')
 			->setEffectiveEntryDate('0112')
 			->setOriginatorStatusCode('2')

@@ -4,6 +4,9 @@ namespace Nacha\Record;
 
 use Nacha\Field\String;
 use Nacha\Field\Number;
+use Nacha\Field\CompanyName;
+use Nacha\Field\StandardEntryClass;
+use Nacha\Field\CompanyEntryDescription;
 
 class BatchHeader {
 
@@ -13,7 +16,7 @@ class BatchHeader {
 	private $companyDiscretionaryData;
 	private $companyId;
 	private $standardEntryClassCode;
-	private $entryDescription;
+	private $companyEntryDescription;
 	private $companyDescriptiveDate;
 	private $effectiveEntryDate;
 	private $settlementDate;
@@ -48,8 +51,8 @@ class BatchHeader {
 	public function getStandardEntryClassCode() {
 		return $this->standardEntryClassCode;
 	}
-	public function getEntryDescription() {
-		return $this->entryDescription;
+	public function getCompanyEntryDescription() {
+		return $this->companyEntryDescription;
 	}
 	public function getCompanyDescriptiveDate() {
 		return $this->companyDescriptiveDate;
@@ -75,7 +78,7 @@ class BatchHeader {
 		return $this;
 	}
 	public function setCompanyName($companyName) {
-		$this->companyName = new String($companyName, 16);
+		$this->companyName = new CompanyName($companyName);
 		return $this;
 	}
 	public function setCompanyDiscretionaryData($companyDiscretionaryData) {
@@ -87,11 +90,11 @@ class BatchHeader {
 		return $this;
 	}
 	public function setStandardEntryClassCode($standardEntryClassCode) {
-		$this->standardEntryClassCode = new String($standardEntryClassCode, 3);
+		$this->standardEntryClassCode = new StandardEntryClass($standardEntryClassCode);
 		return $this;
 	}
-	public function setEntryDescription($entryDescription) {
-		$this->entryDescription = new String($entryDescription, 10);
+	public function setCompanyEntryDescription($companyEntryDescription) {
+		$this->companyEntryDescription = new CompanyEntryDescription($companyEntryDescription);
 		return $this;
 	}
 	public function setCompanyDescriptiveDate($companyDescriptiveDate) {
@@ -126,7 +129,7 @@ class BatchHeader {
 			$this->companyDiscretionaryData.
 			$this->companyId.
 			$this->standardEntryClassCode.
-			$this->entryDescription.
+			$this->companyEntryDescription.
 			$this->companyDescriptiveDate.
 			$this->effectiveEntryDate.
 			$this->settlementDate.
