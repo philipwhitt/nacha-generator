@@ -1,5 +1,11 @@
 {
 	"name": "nacha/file-generator",
+	"license": "GPL-3.0+",
+	"authors": [{
+		"name": "Philip Whitt",
+		"email": "philipwhitt88@gmail.com",
+		"homepage": "http://www.philipwhitt.com"
+	}],
 	"description" : "Easy to use NACHA file generation for PPD/CCD transactions. Modeled using NACHA documentation.",
 	"require": {
 	},
