@@ -2,6 +2,7 @@
 
 namespace Nacha;
 
+use Nacha\Record\Block;
 use Nacha\Record\FileHeader;
 use Nacha\Record\FileFooter;
 
@@ -30,7 +31,6 @@ class FileGenerator {
 
 		$fileFooter = (new FileFooter)
 			->setBatchCount(count($this->batches))
-			->setBlockCount(1) // @todo wtf is this?
 			->setEntryHash(9101298); // @todo calculate this
 
 		$totalDebits     = 0;
@@ -45,11 +45,24 @@ class FileGenerator {
 			$batches .= $batch."\n";
 		}
 
+		// block padding
+		// num entries + num batches header/footer + file header/footer
+		$totalRecords = $totalEntryCount + (count($this->batches) * 2) + 2;
+		$blocksNeeded = (ceil($totalRecords / 10) * 10) - $totalRecords;
+
+		$block = '';
+		for ($x=0; $x<$blocksNeeded % 10; $x++) {
+			$block .= (new Block)."\n";
+		}
+
+		$fileFooter->setBlockCount(round($totalEntryCount / 10));
 		$fileFooter->setEntryAddendaCount($totalEntryCount);
 		$fileFooter->setTotalDebits($totalDebits);
 		$fileFooter->setTotalCredits($totalCredits);
 
-		return $this->header."\n".$batches.$fileFooter;
+		$output = $this->header."\n".$batches.$fileFooter."\n".$block;
+
+		return rtrim($output, "\n");
 	}
 
 }
