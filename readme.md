@@ -44,7 +44,7 @@ $batch->addDebitEntry((new DebitEntry)
 $file->addBatch($batch);
 
 // completed file ready for output
-$output = (string)$file);
+$output = (string)$file;
 
 ```
 
