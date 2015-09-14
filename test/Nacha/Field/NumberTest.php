@@ -12,12 +12,11 @@ class NumberTest extends \PHPUnit_Framework_TestCase {
 		$this->assertEquals('0000000101', (string)$nbr);
 	}
 
+	/**
+	 * @expectedException Nacha\Field\InvalidFieldException
+	 */
 	public function testTruncation() {
-		// given
-		$nbr = new Number(111101, 5);
-
-		// then
-		$this->assertEquals('11110', (string)$nbr);
+		new Number(111101, 5);
 	}
 
 }
