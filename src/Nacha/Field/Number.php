@@ -8,7 +8,7 @@ class Number {
 	protected $length;
 
 	public function __construct($value, $length) {
-		$this->value  = (int)$value;
+		$this->value  = (int)substr((string)$value, 0, $length);
 		$this->length = $length;
 
 		if (!is_int($this->value)) {
