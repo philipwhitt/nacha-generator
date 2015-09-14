@@ -6,9 +6,8 @@ use Nacha\Field\String;
 use Nacha\Field\Number;
 
 // PPD, TEL, WEB debit
-class DebitEntry {
+class DebitEntry extends Entry {
 
-	private $recordTypeCode;
 	private $transactionCode;
 	private $receivingDfiId;
 	private $checkDigit;
@@ -18,19 +17,14 @@ class DebitEntry {
 	private $idividualName;
 	private $discretionaryData;
 	private $addendaRecordIndicator;
-	private $traceNumber;
 
 	public function __construct() {
 		// defaults
-		$this->setRecordTypeCode(6);
 		$this->setIndividualId('');
 		$this->setDiscretionaryData('');
 		$this->setAddendaRecordIndicator(0);
 	}
 
-	public function getRecordTypeCode() {
-		return $this->recordTypeCode;
-	}
 	public function getTransactionCode() {
 		return $this->transactionCode;
 	}
@@ -58,14 +52,7 @@ class DebitEntry {
 	public function getAddendaRecordIndicator() {
 		return $this->addendaRecordIndicator;
 	}
-	public function getTraceNumber() {
-		return $this->traceNumber;
-	}
 
-	public function setRecordTypeCode($recordTypeCode) {
-		$this->recordTypeCode = new Number($recordTypeCode, 1);
-		return $this;
-	}
 	public function setTransactionCode($transactionCode) {
 		$this->transactionCode = new Number($transactionCode, 2);
 		return $this;
@@ -100,10 +87,6 @@ class DebitEntry {
 	}
 	public function setAddendaRecordIndicator($addendaRecordIndicator) {
 		$this->addendaRecordIndicator = new Number($addendaRecordIndicator, 1);
-		return $this;
-	}
-	public function setTraceNumber($traceNumber) {
-		$this->traceNumber = new Number($traceNumber, 15);
 		return $this;
 	}
 
