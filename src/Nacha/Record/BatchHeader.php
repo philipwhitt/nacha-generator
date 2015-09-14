@@ -7,6 +7,7 @@ use Nacha\Field\Number;
 use Nacha\Field\CompanyName;
 use Nacha\Field\StandardEntryClass;
 use Nacha\Field\CompanyEntryDescription;
+use Nacha\Field\OriginatorStatusCode;
 
 class BatchHeader {
 
@@ -110,7 +111,7 @@ class BatchHeader {
 		return $this;
 	}
 	public function setOriginatorStatusCode($originatorStatusCode) {
-		$this->originatorStatusCode = new String($originatorStatusCode, 1);
+		$this->originatorStatusCode = new OriginatorStatusCode($originatorStatusCode);
 		return $this;
 	}
 	public function setOriginatingDFiId($originatingDFiId) {

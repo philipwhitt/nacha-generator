@@ -10,7 +10,7 @@ class OriginatorStatusCode extends Number {
 	const ORIGINATOR_IS_FED    = 2; // same as exempt
 
 	public function __construct($value) {
-		parent::__construct($value, 2);
+		parent::__construct($value, 1);
 
 		$valid = [
 			self::PREPARED_BY_OPERATOR,
