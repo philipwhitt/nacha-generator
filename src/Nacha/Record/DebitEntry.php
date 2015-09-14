@@ -11,13 +11,14 @@ class DebitEntry extends Entry {
 	private $receivingDfiId;
 	private $checkDigit;
 	private $dFiAccountNumber;
-	private $amount;
 	private $individualId;
 	private $idividualName;
 	private $discretionaryData;
 	private $addendaRecordIndicator;
 
 	public function __construct() {
+		parent::__construct();
+
 		// defaults
 		$this->setIndividualId('');
 		$this->setDiscretionaryData('');
@@ -32,9 +33,6 @@ class DebitEntry extends Entry {
 	}
 	public function getDFiAccountNumber() {
 		return $this->dFiAccountNumber;
-	}
-	public function getAmount() {
-		return $this->amount;
 	}
 	public function getIndividualId() {
 		return $this->individualId;
@@ -59,10 +57,6 @@ class DebitEntry extends Entry {
 	}
 	public function setDFiAccountNumber($dFiAccountNumber) {
 		$this->dFiAccountNumber = new String($dFiAccountNumber, 17);
-		return $this;
-	}
-	public function setAmount($amount) {
-		$this->amount = new Number($amount, 10);
 		return $this;
 	}
 	public function setIndividualId($individualId) {

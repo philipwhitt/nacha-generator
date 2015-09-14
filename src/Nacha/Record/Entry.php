@@ -5,13 +5,25 @@ namespace Nacha\Record;
 use Nacha\Field\String;
 use Nacha\Field\Number;
 use Nacha\Field\TransactionCode;
+use Nacha\Field\Amount;
 
 abstract class Entry {
 
 	protected $recordTypeCode = 6;
 	protected $traceNumber;
 	protected $transactionCode;
+	protected $amount;
 
+	public function __construct() {
+		// initialize
+		$this->setTransactionCode(TransactionCode::CHECKING_DEPOSIT);
+		$this->setAmount(0);
+		$this->setTraceNumber(0, 0);
+	}
+
+	public function getAmount() {
+		return $this->amount;
+	}
 	public function getTransactionCode() {
 		return $this->transactionCode;
 	}
@@ -19,6 +31,10 @@ abstract class Entry {
 		return $this->traceNumber;
 	}
 
+	public function setAmount($amount) {
+		$this->amount = new Amount($amount);
+		return $this;
+	}
 	public function setTransactionCode($transactionCode) {
 		$this->transactionCode = new TransactionCode($transactionCode);
 		return $this;

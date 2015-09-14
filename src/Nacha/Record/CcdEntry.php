@@ -11,13 +11,14 @@ class CcdEntry extends Entry {
 	private $receivingDfiId;
 	private $checkDigit;
 	private $receivingDFiAccountNumber;
-	private $amount;
 	private $receivingCompanyId;
 	private $receivingCompanyName;
 	private $discretionaryData;
 	private $addendaRecordIndicator;
 
 	public function __construct() {
+		parent::__construct();
+
 		// defaults
 		$this->setAddendaRecordIndicator(0);
 		$this->setReceivingCompanyId('');
@@ -32,9 +33,6 @@ class CcdEntry extends Entry {
 	}
 	public function getReceivingDFiAccountNumber() {
 		return $this->receivingDFiAccountNumber;
-	}
-	public function getAmount() {
-		return $this->amount;
 	}
 	public function getReceivingCompanyId() {
 		return $this->receivingCompanyId;
@@ -59,10 +57,6 @@ class CcdEntry extends Entry {
 	}
 	public function setReceivingDFiAccountNumber($receivingDFiAccountNumber) {
 		$this->receivingDFiAccountNumber = new String($receivingDFiAccountNumber, 17);
-		return $this;
-	}
-	public function setAmount($amount) {
-		$this->amount = new Number($amount, 10);
 		return $this;
 	}
 	public function setReceivingCompanyId($receivingCompanyId) {
