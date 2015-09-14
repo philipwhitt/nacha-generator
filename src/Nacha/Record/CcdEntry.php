@@ -56,6 +56,7 @@ class CcdEntry extends Entry {
 		return $this;
 	}
 	public function setReceivingDFiAccountNumber($receivingDFiAccountNumber) {
+		$this->setHashable($receivingDFiAccountNumber);
 		$this->receivingDFiAccountNumber = new String($receivingDFiAccountNumber, 17);
 		return $this;
 	}

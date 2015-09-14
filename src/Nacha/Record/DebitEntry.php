@@ -48,6 +48,7 @@ class DebitEntry extends Entry {
 	}
 
 	public function setReceivingDFiId($receivingDfiId) {
+		$this->setHashable($receivingDfiId);
 		$this->receivingDfiId = new Number($receivingDfiId, 8);
 		return $this;
 	}

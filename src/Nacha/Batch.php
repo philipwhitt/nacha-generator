@@ -51,12 +51,23 @@ class Batch {
 		return $this;
 	}
 
+	public function getEntryHash() {
+		$hash    = 0;
+		$entries = array_merge($this->debitEntries, $this->creditEntries);
+
+		foreach ($entries as $entry) {
+			$hash += $entry->getHashable();
+		}
+
+		return substr((string)$hash, -10); // only take 10 digits from end of string to 10
+	}
+
 	public function __toString() {
 		$entries = '';
 
 		$footer = (new BatchFooter)
 			->setEntryAddendaCount($this->getTotalEntryCount())
-			->setEntryHash('9101298') // @todo calculate this
+			->setEntryHash($this->getEntryHash())
 			->setCompanyIdNumber((string)$this->header->getCompanyId())
 			->setOriginatingDfiId((string)$this->header->getOriginatingDFiId())
 			->setBatchNumber((string)$this->getHeader()->getBatchNumber());
@@ -79,6 +90,7 @@ class Batch {
 		} else if (count($this->debitEntries) == 0 && count($this->creditEntries) > 0) {
 			$this->header->setServiceClassCode(self::CREDITS_ONLY);
 		}
+
 
 		$footer->setTotalDebitAmount($this->getTotalDebitAmount());
 		$footer->setTotalCreditAmount($this->getTotalCreditAmount());

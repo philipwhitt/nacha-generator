@@ -14,6 +14,8 @@ abstract class Entry {
 	protected $transactionCode;
 	protected $amount;
 
+	private $hashable = 0;
+
 	public function __construct() {
 		// initialize
 		$this->setTransactionCode(TransactionCode::CHECKING_DEPOSIT);
@@ -21,6 +23,9 @@ abstract class Entry {
 		$this->setTraceNumber(0, 0);
 	}
 
+	public function getHashable() {
+		return $this->hashable;
+	}
 	public function getAmount() {
 		return $this->amount;
 	}
@@ -31,6 +36,10 @@ abstract class Entry {
 		return $this->traceNumber;
 	}
 
+	public function setHashable($hashable) {
+		$this->hashable = $hashable;
+		return $this;
+	}
 	public function setAmount($amount) {
 		$this->amount = new Amount($amount);
 		return $this;

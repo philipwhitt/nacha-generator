@@ -26,12 +26,20 @@ class File {
 		$batch->getHeader()->setBatchNumber(count($this->batches));
 	}
 
+	private function getHash() {
+		$hash = 0;
+		foreach ($this->batches as $batch) {
+			$hash += $batch->getEntryHash();
+		}
+		return substr((string)$hash, -10); // only take 10 digits from end of string to 10
+	}
+
 	public function __toString() {
 		$batches = '';
 
 		$fileFooter = (new FileFooter)
-			->setBatchCount(count($this->batches))
-			->setEntryHash(9101298); // @todo calculate this
+			->setEntryHash($this->getHash())
+			->setBatchCount(count($this->batches));
 
 		$totalDebits     = 0;
 		$totalCredits    = 0;
