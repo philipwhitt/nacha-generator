@@ -11,7 +11,7 @@ class CcdEntryTest extends \PHPUnit_Framework_TestCase {
 			->setReceivingDfiId('19101298')
 			->setCheckDigit(7)
 			->setReceivingDFiAccountNumber('46479999')
-			->setAmount('55000')
+			->setAmount('550.00')
 			->setReceivingCompanyId('Location 23')
 			->setReceivingCompanyName('Best Co 23')
 			->setDiscretionaryData('S')
@@ -29,7 +29,7 @@ class CcdEntryTest extends \PHPUnit_Framework_TestCase {
 			->setReceivingDfiId('19101298')
 			->setCheckDigit(7)
 			->setReceivingDFiAccountNumber('46479999')
-			->setAmount('55000')
+			->setAmount('550.00')
 			->setReceivingCompanyName('Best Co 23')
 			->setAddendaRecordIndicator(0)
 			->setTraceNumber('19101298', 15);

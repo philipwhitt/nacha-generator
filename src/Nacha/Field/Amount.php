@@ -5,16 +5,17 @@ namespace Nacha\Field;
 class Amount extends Number {
 
 	public function __construct($value) {
-		$float = (float)$value;
+		// float value, preserve decimal places
+		$value = number_format((float)$value, 2, '.', '');
 
-		// remove and dots
-		$strValue = str_replace('.', '', (string)$float);
+		// remove dots
+		$value = str_replace('.', '', $value);
 
-		if (strlen($strValue) > 10) {
-			throw new InvalidFieldException('Amount "' . $float . '" is too large.');
+		if (strlen($value) > 10) {
+			throw new InvalidFieldException('Amount "' . $value . '" is too large.');
 		}
 
-		parent::__construct($strValue, 10);
+		parent::__construct($value, 10);
 	}
 
 }
