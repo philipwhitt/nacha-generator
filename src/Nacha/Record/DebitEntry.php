@@ -25,6 +25,7 @@ class DebitEntry {
 		$this->setRecordTypeCode(6);
 		$this->setIndividualId('');
 		$this->setDiscretionaryData('');
+		$this->setAddendaRecordIndicator(0);
 	}
 
 	public function getRecordTypeCode() {
