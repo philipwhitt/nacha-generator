@@ -26,7 +26,6 @@ class BatchHeader {
 
 	public function __construct() {
 		// defaults
-		$this->setRecordTypeCode(6);
 		$this->setEffectiveEntryDate(date('ymd', time()));
 
 		// Set by operator

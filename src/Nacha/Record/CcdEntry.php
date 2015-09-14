@@ -22,6 +22,7 @@ class CcdEntry {
 
 	public function __construct() {
 		// defaults
+		$this->setRecordTypeCode(6);
 		$this->setReceivingCompanyId('');
 		$this->setDiscretionaryData('');
 	}
