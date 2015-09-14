@@ -12,7 +12,7 @@ class Number {
 		$this->length = $length;
 
 		if (strlen($value) > $length) {
-			throw new InvalidFieldException('Value "' . $value . '" must be '.$length.'.');
+			throw new InvalidFieldException('Length of "' . $value . '" must be '.$length.'.');
 		}
 
 		if (!is_int($this->value)) {
