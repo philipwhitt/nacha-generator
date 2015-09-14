@@ -9,7 +9,7 @@ use Nacha\Field\FileIdModifier;
 
 class FileHeader {
 
-	private $recordTypeCode;
+	private $recordTypeCode = 1; // not able to overwrite this 
 	private $priorityCode;
 	private $immediateDestination;
 	private $immediateOrigin;
@@ -25,7 +25,6 @@ class FileHeader {
 
 	public function __construct() {
 		// defaults
-		$this->setRecordTypeCode(1);
 		$this->setRecordSize(94);
 		$this->setBlockingFactor(10);
 		$this->setFormatCode(1);
@@ -39,10 +38,6 @@ class FileHeader {
 		$this->setFileCreationTime('');
 	}
 
-	public function setRecordTypeCode($recordTypeCode) {
-		$this->recordTypeCode = new Number($recordTypeCode, 1);
-		return $this;
-	}
 	public function setPriorityCode($priorityCode) {
 		$this->priorityCode = new Number($priorityCode, 2);
 		return $this;
