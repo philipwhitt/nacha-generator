@@ -8,8 +8,12 @@ class Number {
 	protected $length;
 
 	public function __construct($value, $length) {
-		$this->value  = (int)substr((string)$value, 0, $length);
+		$this->value  = (int)$value;
 		$this->length = $length;
+
+		if (strlen($value) > $length) {
+			throw new InvalidFieldException('Value "' . $value . '" must be '.$length.'.');
+		}
 
 		if (!is_int($this->value)) {
 			throw new InvalidFieldException('Value "' . $value . '" must be an integer.');
