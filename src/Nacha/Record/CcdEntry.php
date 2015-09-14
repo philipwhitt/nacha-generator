@@ -8,7 +8,6 @@ use Nacha\Field\Number;
 // Cash Collection and Disbursement Entry (CCD)
 class CcdEntry extends Entry {
 
-	private $transactionCode;
 	private $receivingDfiId;
 	private $checkDigit;
 	private $receivingDFiAccountNumber;
@@ -25,9 +24,6 @@ class CcdEntry extends Entry {
 		$this->setDiscretionaryData('');
 	}
 
-	public function getTransactionCode() {
-		return $this->transactionCode;
-	}
 	public function getReceivingDfiId() {
 		return $this->receivingDfiId;
 	}
@@ -53,10 +49,6 @@ class CcdEntry extends Entry {
 		return $this->addendaRecordIndicator;
 	}
 
-	public function setTransactionCode($transactionCode) {
-		$this->transactionCode = new Number($transactionCode, 2);
-		return $this;
-	}
 	public function setReceivingDFiId($receivingDfiId) {
 		$this->receivingDfiId = new Number($receivingDfiId, 8);
 		return $this;

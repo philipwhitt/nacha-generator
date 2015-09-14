@@ -8,7 +8,6 @@ use Nacha\Field\Number;
 // PPD, TEL, WEB debit
 class DebitEntry extends Entry {
 
-	private $transactionCode;
 	private $receivingDfiId;
 	private $checkDigit;
 	private $dFiAccountNumber;
@@ -25,9 +24,6 @@ class DebitEntry extends Entry {
 		$this->setAddendaRecordIndicator(0);
 	}
 
-	public function getTransactionCode() {
-		return $this->transactionCode;
-	}
 	public function getReceivingDfiId() {
 		return $this->receivingDfiId;
 	}
@@ -53,10 +49,6 @@ class DebitEntry extends Entry {
 		return $this->addendaRecordIndicator;
 	}
 
-	public function setTransactionCode($transactionCode) {
-		$this->transactionCode = new Number($transactionCode, 2);
-		return $this;
-	}
 	public function setReceivingDFiId($receivingDfiId) {
 		$this->receivingDfiId = new Number($receivingDfiId, 8);
 		return $this;
