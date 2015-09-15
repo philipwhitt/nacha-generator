@@ -5,14 +5,14 @@ namespace Nacha\Field;
 class AmountTest extends \PHPUnit_Framework_TestCase {
 
 	/**
-	 * @expectedException Nacha\Field\InvalidFieldException
+	 * @expectedException \Nacha\Field\InvalidFieldException
 	 */
 	public function testInvalidLength_Float() {
 		new Amount(100000000.00); // only accepts $99M
 	}
 
 	/**
-	 * @expectedException Nacha\Field\InvalidFieldException
+	 * @expectedException \Nacha\Field\InvalidFieldException
 	 */
 	public function testInvalidLength_String() {
 		new Amount('100000000.00'); // only accepts $99M
