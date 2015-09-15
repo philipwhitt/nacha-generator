@@ -15,16 +15,14 @@ class StringTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * @expectedException \Nacha\Field\InvalidFieldException
 	 */
-	public function testNotString()
-	{
+	public function testNotString() {
 		new String(12, 32);
 	}
 
 	/**
 	 * @expectedException \Nacha\Field\InvalidFieldException
 	 */
-	public function testInvalidCharacter()
-	{
+	public function testInvalidCharacter() {
 		new String("!testtext", 32);
 	}
 }

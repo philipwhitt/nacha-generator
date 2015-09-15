@@ -12,4 +12,11 @@ class RoutingNumberTest extends \PHPUnit_Framework_TestCase {
 		$this->assertEquals('001243123', (string)$nbr);
 	}
 
+	/**
+	 * @expectedException \Nacha\Field\InvalidFieldException
+	 */
+	public function testInvalidLength() {
+		new RoutingNumber(111101);
+	}
+
 }
