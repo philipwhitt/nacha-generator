@@ -3,75 +3,83 @@
 namespace Nacha;
 
 use Nacha\Record\Block;
-use Nacha\Record\FileHeader;
 use Nacha\Record\FileFooter;
+use Nacha\Record\FileHeader;
 
-class File {
+class File
+{
 
-	private $header;
-	/** @var Batch[] */
-	private $batches = [];
+    private $header;
+    /** @var Batch[] */
+    private $batches = [];
 
-	public function __construct() {
-		$this->header = new FileHeader();
-	}
+    public function __construct()
+    {
+        $this->header = new FileHeader();
+    }
 
-	public function getHeader() {
-		return $this->header;
-	}
-	public function getBatches() {
-		return $this->batches;
-	}
-	public function addBatch(Batch $batch) {
-		$this->batches[] = $batch;
-		$batch->getHeader()->setBatchNumber(count($this->batches));
-	}
+    public function getHeader()
+    {
+        return $this->header;
+    }
 
-	private function getHash() {
-		$hash = 0;
-		foreach ($this->batches as $batch) {
-			$hash += $batch->getEntryHash();
-		}
-		return substr((string)$hash, -10); // only take 10 digits from end of string to 10
-	}
+    public function getBatches()
+    {
+        return $this->batches;
+    }
 
-	public function __toString() {
-		$batches = '';
+    public function addBatch(Batch $batch)
+    {
+        $this->batches[] = $batch;
+        $batch->getHeader()->setBatchNumber(count($this->batches));
+    }
 
-		$fileFooter = (new FileFooter)
-			->setEntryHash($this->getHash())
-			->setBatchCount(count($this->batches));
+    private function getHash()
+    {
+        $hash = 0;
+        foreach ($this->batches as $batch) {
+            $hash += $batch->getEntryHash();
+        }
+        return substr((string)$hash, -10); // only take 10 digits from end of string to 10
+    }
 
-		$totalDebits     = 0;
-		$totalCredits    = 0;
-		$totalEntryCount = 0;
+    public function __toString()
+    {
+        $batches = '';
 
-		foreach ($this->batches as $batch) {
-			$totalEntryCount += $batch->getTotalEntryCount();
-			$totalDebits     += $batch->getTotalDebitAmount(); // is this total amount of debits, or entries?
-			$totalCredits    += $batch->getTotalCreditAmount(); // is this total amount of credits, or entries?
+        $fileFooter = (new FileFooter)
+            ->setEntryHash($this->getHash())
+            ->setBatchCount(count($this->batches));
 
-			$batches .= $batch."\n";
-		}
+        $totalDebits = 0;
+        $totalCredits = 0;
+        $totalEntryCount = 0;
 
-		// block padding
-		// num entries + num batches header/footer + file header/footer
-		$totalRecords = $totalEntryCount + (count($this->batches) * 2) + 2;
-		$blocksNeeded = (ceil($totalRecords / 10) * 10) - $totalRecords;
+        foreach ($this->batches as $batch) {
+            $totalEntryCount += $batch->getTotalEntryCount();
+            $totalDebits += $batch->getTotalDebitAmount(); // is this total amount of debits, or entries?
+            $totalCredits += $batch->getTotalCreditAmount(); // is this total amount of credits, or entries?
 
-		$block = '';
-		for ($x=0; $x<$blocksNeeded % 10; $x++) {
-			$block .= (new Block)."\n";
-		}
+            $batches .= $batch . "\n";
+        }
 
-		$fileFooter->setBlockCount(round($totalRecords / 10));
-		$fileFooter->setEntryAddendaCount($totalEntryCount);
-		$fileFooter->setTotalDebits($totalDebits);
-		$fileFooter->setTotalCredits($totalCredits);
+        // block padding
+        // num entries + num batches header/footer + file header/footer
+        $totalRecords = $totalEntryCount + (count($this->batches) * 2) + 2;
+        $blocksNeeded = (ceil($totalRecords / 10) * 10) - $totalRecords;
 
-		$output = $this->header."\n".$batches.$fileFooter."\n".$block;
+        $block = '';
+        for ($x = 0; $x < $blocksNeeded % 10; $x++) {
+            $block .= (new Block) . "\n";
+        }
 
-		return rtrim($output, "\n");
-	}
+        $fileFooter->setBlockCount(round($totalRecords / 10));
+        $fileFooter->setEntryAddendaCount($totalEntryCount);
+        $fileFooter->setTotalDebits($totalDebits);
+        $fileFooter->setTotalCredits($totalCredits);
 
+        $output = $this->header . "\n" . $batches . $fileFooter . "\n" . $block;
+
+        return rtrim($output, "\n");
+    }
 }
