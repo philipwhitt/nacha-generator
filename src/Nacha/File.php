@@ -9,6 +9,7 @@ use Nacha\Record\FileFooter;
 class File {
 
 	private $header;
+	/** @var Batch[] */
 	private $batches = [];
 
 	public function __construct() {

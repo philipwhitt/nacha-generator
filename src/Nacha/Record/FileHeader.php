@@ -29,7 +29,7 @@ class FileHeader {
 		$this->setBlockingFactor(10);
 		$this->setFormatCode(1);
 		$this->setFileIdModifier('A');
-		$this->setFileCreationDate(date('ymd', time()));
+		$this->setFileCreationDate(date('ymd'));
 
 		// optional
 		$this->setImmediateDestinationName('');

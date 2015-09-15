@@ -6,7 +6,12 @@ use Nacha\Record\BatchHeader;
 use Nacha\Record\BatchFooter;
 use Nacha\Record\DebitEntry;
 use Nacha\Record\CcdEntry;
+use Nacha\Record\Entry;
 
+/**
+ * Class Batch
+ * @package Nacha
+ */
 class Batch {
 
 	// Service Class Codes
@@ -15,8 +20,12 @@ class Batch {
 	const DEBITS_ONLY  = 225;
 
 	private $header;
-	private $debitEntries = [];
+
+	/** @var DebitEntry[] */
 	private $creditEntries = [];
+
+	/** @var CcdEntry[] */
+	private $debitEntries = [];
 
 	public function __construct() {
 		$this->header = new BatchHeader();
@@ -53,13 +62,15 @@ class Batch {
 
 	public function getEntryHash() {
 		$hash    = 0;
+		/** @var Entry[] $entries */
 		$entries = array_merge($this->debitEntries, $this->creditEntries);
 
 		foreach ($entries as $entry) {
 			$hash += $entry->getHashable();
 		}
 
-		return substr((string)$hash, -10); // only take 10 digits from end of string to 10
+		$hashStr = substr((string)$hash, -10); // only take 10 digits from end of string to 10
+		return intval($hashStr);
 	}
 
 	public function __toString() {
