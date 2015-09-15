@@ -5,7 +5,14 @@ namespace Nacha;
 use Nacha\Record\DebitEntry;
 use Nacha\Record\CcdEntry;
 
+/**
+ * Class BatchTest
+ * @package Nacha
+ */
 class BatchTest extends \PHPUnit_Framework_TestCase {
+
+	/** @var Batch */
+	private $batch;
 
 	public function setup() {
 		$this->batch = new Batch();

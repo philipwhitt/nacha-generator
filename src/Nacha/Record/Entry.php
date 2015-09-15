@@ -2,7 +2,6 @@
 
 namespace Nacha\Record;
 
-use Nacha\Field\String;
 use Nacha\Field\Number;
 use Nacha\Field\TransactionCode;
 use Nacha\Field\Amount;
