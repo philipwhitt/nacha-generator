@@ -37,7 +37,7 @@ $batch->getHeader()
 
 $batch->addDebitEntry((new DebitEntry)
 	...
-	->setTraceNumber('99936340000015'));
+	->setTraceNumber('99936340', 1));
 
 $file->addBatch($batch);
 
