@@ -63,7 +63,7 @@ class File {
 			$block .= (new Block)."\n";
 		}
 
-		$fileFooter->setBlockCount(round($totalEntryCount / 10));
+		$fileFooter->setBlockCount(round($totalRecords / 10));
 		$fileFooter->setEntryAddendaCount($totalEntryCount);
 		$fileFooter->setTotalDebits($totalDebits);
 		$fileFooter->setTotalCredits($totalCredits);
