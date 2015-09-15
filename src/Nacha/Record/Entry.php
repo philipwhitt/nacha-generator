@@ -10,6 +10,7 @@ use Nacha\Field\Amount;
 abstract class Entry {
 
 	protected $recordTypeCode = 6;
+	protected $receivingDfiId;
 	protected $traceNumber;
 	protected $transactionCode;
 	protected $amount;
@@ -23,6 +24,9 @@ abstract class Entry {
 		$this->setTraceNumber(0, 0);
 	}
 
+	public function getReceivingDfiId() {
+		return $this->receivingDfiId;
+	}
 	public function getHashable() {
 		return $this->hashable;
 	}
@@ -36,6 +40,11 @@ abstract class Entry {
 		return $this->traceNumber;
 	}
 
+	public function setReceivingDFiId($receivingDfiId) {
+		$this->setHashable($receivingDfiId);
+		$this->receivingDfiId = new Number($receivingDfiId, 8);
+		return $this;
+	}
 	public function setHashable($hashable) {
 		$this->hashable = $hashable;
 		return $this;
