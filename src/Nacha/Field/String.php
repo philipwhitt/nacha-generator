@@ -13,9 +13,15 @@ class String {
 
 		if (!is_string($value)) {
 			throw new InvalidFieldException('Value "' . $value . '" must be an string.');
+		}
 
-		} else if (!preg_match('/^[\w\s-]*$/', $value)) {
-			throw new InvalidFieldException('Value "' . $value . '" has invalid ascii characters.');
+		// ASCII 0-31 are invalid chars
+		if (strlen($value) > 0) {
+			foreach (str_split($value) as $char) {
+				if (ord($char) < 32) {
+					throw new InvalidFieldException('Invalid ASCII: ' . ord($value));
+				}
+			}
 		}
 	}
 
