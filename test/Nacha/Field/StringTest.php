@@ -12,6 +12,29 @@ class StringTest extends \PHPUnit_Framework_TestCase {
 		$this->assertEquals('Hello World                     ', (string)$str);
 	}
 
+	public function testOptional() {
+		// given
+		$str = new String('', 10);
+
+		// then
+		$this->assertEquals('          ', (string)$str);
+	}
+
+	public function testValidCharacters() {
+		// given
+		$allValidAsciiChars = '';
+		
+		foreach (range(32, 127) as $ascii) {
+			$allValidAsciiChars .= chr($ascii);
+		}
+
+		// when
+		$str = new String($allValidAsciiChars, strlen($allValidAsciiChars));
+
+		// then
+		$this->assertEquals($allValidAsciiChars, (string)$str);
+	}
+
 	/**
 	 * @expectedException \Nacha\Field\InvalidFieldException
 	 */
@@ -19,10 +42,19 @@ class StringTest extends \PHPUnit_Framework_TestCase {
 		new String(12, 32);
 	}
 
-	/**
-	 * @expectedException \Nacha\Field\InvalidFieldException
-	 */
 	public function testInvalidCharacter() {
-		new String("!testtext", 32);
+		$asciiValues = array_merge(range(0, 31), range(128, 255));
+		foreach ($asciiValues as $ascii) {
+			$invalid = 'validtext'.chr($ascii);
+
+			try {
+				new String($invalid, strlen($invalid));
+
+				$this->assertTrue(false, 'Should throw an exception for invalid ASCII:'.$ascii);
+
+			} catch (InvalidFieldException $e) {
+				$this->assertTrue(true);
+			}
+		}
 	}
 }
