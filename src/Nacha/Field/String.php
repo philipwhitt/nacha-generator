@@ -15,10 +15,12 @@ class String {
 			throw new InvalidFieldException('Value "' . $value . '" must be an string.');
 		}
 
-		// ASCII 0-31 are invalid chars
 		if (strlen($value) > 0) {
 			foreach (str_split($value) as $char) {
-				if (ord($char) < 32) {
+				$ascii = ord($char);
+
+				// ASCII 0-31 + extended ASCII are invalid chars. 
+				if ($ascii < 32 || $ascii > 127) {
 					throw new InvalidFieldException('Invalid ASCII: ' . ord($value));
 				}
 			}

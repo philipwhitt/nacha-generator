@@ -43,7 +43,8 @@ class StringTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	public function testInvalidCharacter() {
-		foreach (range(0, 31) as $ascii) {
+		$asciiValues = array_merge(range(0, 31), range(128, 255));
+		foreach ($asciiValues as $ascii) {
 			$invalid = 'validtext'.chr($ascii);
 
 			try {
