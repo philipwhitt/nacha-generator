@@ -20,7 +20,7 @@ class CompanyEntryDescriptionTest extends \PHPUnit_Framework_TestCase
         $entry = new CompanyEntryDescription('some prod');
 
         // then
-        $this->assertEquals('some prod ', (string)$entry);
+        $this->assertEquals('SOME PROD ', (string)$entry);
     }
 
 }

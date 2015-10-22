@@ -21,7 +21,7 @@ class CcdEntryTest extends \PHPUnit_Framework_TestCase
             ->setTraceNumber('19101298', 15);
 
         $this->assertEquals(94, strlen($entry));
-        $this->assertEquals('62719101298746479999         0000055000Location 23    Best Co 23            S 0191012980000015', (string)$entry);
+        $this->assertEquals('62719101298746479999         0000055000LOCATION 23    BEST CO 23            S 0191012980000015', (string)$entry);
     }
 
     public function testEntry_OptionalFields()
@@ -38,7 +38,7 @@ class CcdEntryTest extends \PHPUnit_Framework_TestCase
             ->setTraceNumber('19101298', 15);
 
         $this->assertEquals(94, strlen($entry));
-        $this->assertEquals('62719101298746479999         0000055000               Best Co 23              0191012980000015', (string)$entry);
+        $this->assertEquals('62719101298746479999         0000055000               BEST CO 23              0191012980000015', (string)$entry);
     }
 
 }

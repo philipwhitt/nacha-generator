@@ -20,7 +20,7 @@ class FileHeaderTest extends \PHPUnit_Framework_TestCase
             ->setReferenceCode('Reference'); // will be truncated
 
         $this->assertEquals(94, strlen($fileHeader));
-        $this->assertEquals('101 051000033 0599999970602102232A094101ImdDest Name           ImdOriginName          Referenc', (string)$fileHeader);
+        $this->assertEquals('101 051000033 0599999970602102232A094101IMDDEST NAME           IMDORIGINNAME          REFERENC', (string)$fileHeader);
     }
 
     public function testFileHeader_OptionalFields()

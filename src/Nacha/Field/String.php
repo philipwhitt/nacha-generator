@@ -23,6 +23,7 @@ class String
 
     public function __toString()
     {
-        return sprintf('%-' . $this->length . 's', $this->value);
+        $str = sprintf('%-' . $this->length . 's', $this->value);
+        return strtoupper($str);
     }
 }

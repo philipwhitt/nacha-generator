@@ -51,7 +51,7 @@ class BatchTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals((string)$this->batch->getHeader()->getServiceClassCode(), Batch::DEBITS_ONLY);
         $this->assertEquals(
             "5225MY BEST COMP    INCLUDES OVERTIME   1419871234PPDPAYROLL   0602  0112     2010212340000001\n" .
-            "62709101298746479999         0000055000SomePerson1255 Alex Dubrovsky        S 0999363400000015\n" .
+            "62709101298746479999         0000055000SOMEPERSON1255 ALEX DUBROVSKY        S 0999363400000015\n" .
             "822500000100091012980000000550000000000000001419871234                         010212340000001",
             $output
         );
@@ -78,7 +78,7 @@ class BatchTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals((string)$this->batch->getHeader()->getServiceClassCode(), Batch::CREDITS_ONLY);
         $this->assertEquals(
             "5220MY BEST COMP    INCLUDES OVERTIME   1419871234PPDPAYROLL   0602  0112     2010212340000001\n" .
-            "62709101298746479999         0000060000Location 23    Best Co 23            S 0099363400000015\n" .
+            "62709101298746479999         0000060000LOCATION 23    BEST CO 23            S 0099363400000015\n" .
             "822000000100091012980000000000000000000600001419871234                         010212340000001",
             $output
         );
@@ -117,8 +117,8 @@ class BatchTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals((string)$this->batch->getHeader()->getServiceClassCode(), Batch::MIXED);
         $this->assertEquals(
             "5200MY BEST COMP    INCLUDES OVERTIME   1419871234PPDPAYROLL   0602  0112     2010212340000001\n" .
-            "62709101298746479999         0000055000SomePerson1255 Alex Dubrovsky        S 0099363400000015\n" .
-            "62709101298746479999         0000060000Location 23    Best Co 23            S 0099363400000015\n" .
+            "62709101298746479999         0000055000SOMEPERSON1255 ALEX DUBROVSKY        S 0099363400000015\n" .
+            "62709101298746479999         0000060000LOCATION 23    BEST CO 23            S 0099363400000015\n" .
             "820000000200182025960000000550000000000600001419871234                         010212340000001",
             $output
         );

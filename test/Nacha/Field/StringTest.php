@@ -11,7 +11,7 @@ class StringTest extends \PHPUnit_Framework_TestCase
         $str = new String('Hello World', 32);
 
         // then
-        $this->assertEquals('Hello World                     ', (string)$str);
+        $this->assertEquals('HELLO WORLD                     ', (string)$str);
     }
 
     /**
