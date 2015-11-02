@@ -5,6 +5,10 @@ namespace Nacha\Record;
 use Nacha\Field\String;
 use Nacha\Field\Number;
 
+/**
+ * Class FileFooter
+ * @package Nacha\Record
+ */
 class FileFooter {
 
 	private $recordTypeCode = 9; // not able to overwrite this 
@@ -49,6 +53,11 @@ class FileFooter {
 	public function setTotalCredits($totalCredits) {
 		$this->totalCredits = new Number($totalCredits, 12);
 		return $this;
+	}
+
+	public function getEntryAddendaCount()
+	{
+		return $this->entryAddendaCount->getIntVal();
 	}
 
 	public function __toString() {

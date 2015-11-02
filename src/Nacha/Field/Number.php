@@ -19,6 +19,11 @@ class Number {
 			throw new InvalidFieldException('Length of "' . $value . '" must be '.$length.'.');
 		}
 	}
+
+	public function getIntVal()
+	{
+		return $this->value;
+	}
 	
 	public function __toString() {
 		return sprintf("%0{$this->length}d", $this->value);
