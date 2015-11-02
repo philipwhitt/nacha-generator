@@ -2,14 +2,13 @@
 
 namespace Nacha\Record;
 
-use Nacha\Field\FileIdModifier;
+use Nacha\Field\String;
 use Nacha\Field\Number;
 use Nacha\Field\RoutingNumber;
-use Nacha\Field\String;
+use Nacha\Field\FileIdModifier;
 
 class FileHeader
 {
-
     private $recordTypeCode = 1; // not able to overwrite this
     private $priorityCode;
     private $immediateDestination;
@@ -24,6 +23,8 @@ class FileHeader
     private $immediateOriginName;
     private $referenceCode;
 
+    const CREATE_DATE_FORMAT = 'ymd';
+
     public function __construct()
     {
         // defaults
@@ -31,7 +32,7 @@ class FileHeader
         $this->setBlockingFactor(10);
         $this->setFormatCode(1);
         $this->setFileIdModifier('A');
-        $this->setFileCreationDate(date('ymd'));
+        $this->setFileCreationDate(date(self::CREATE_DATE_FORMAT));
 
         // optional
         $this->setImmediateDestinationName('');
@@ -112,6 +113,15 @@ class FileHeader
         return $this;
     }
 
+    public function getEffectiveDate()
+    {
+        $dateArray = date_parse_from_format(self::CREATE_DATE_FORMAT, $this->fileCreationDate);
+        $date = new \DateTime();
+        $date->setDate($dateArray['year'], $dateArray['month'], $dateArray['day']);
+
+        return $date->add(\DateInterval::createFromDateString('1 day'));
+    }
+
     public function __toString()
     {
         return $this->recordTypeCode .
@@ -128,4 +138,5 @@ class FileHeader
         $this->immediateOriginName .
         $this->referenceCode;
     }
+
 }
