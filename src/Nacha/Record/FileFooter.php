@@ -119,7 +119,7 @@ class FileFooter
      */
     public function getTotalCredit()
     {
-        return $this->totalDebits->getFloatVal();
+        return $this->totalCredits->getFloatVal();
     }
 
     /**
