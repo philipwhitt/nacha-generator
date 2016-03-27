@@ -50,7 +50,7 @@ class FileHeader {
 		if(strlen($immediateOrigin) == 9) {
 			$this->immediateOrigin = new RoutingNumber($immediateOrigin);
 		}
-		else {
+		else if (strlen($immediateOrigin) == 10) {
 			$this->immediateOrigin = new String($immediateOrigin, 10);
 		}
 		return $this;
