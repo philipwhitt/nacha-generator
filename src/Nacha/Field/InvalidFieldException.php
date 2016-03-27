@@ -2,4 +2,6 @@
 
 namespace Nacha\Field;
 
-class InvalidFieldException extends \Nacha\Exception {}
+class InvalidFieldException extends \Nacha\Exception
+{
+}
