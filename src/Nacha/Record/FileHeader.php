@@ -71,7 +71,12 @@ class FileHeader
      */
     public function setImmediateOrigin($immediateOrigin)
     {
-        $this->immediateOrigin = new RoutingNumber($immediateOrigin);
+        if(strlen($immediateOrigin) == 9) {
+            $this->immediateOrigin = new RoutingNumber($immediateOrigin);
+        }
+        else if(strlen($immediateOrigin) == 10) {
+            $this->immediateOrigin = new String($immediateOrigin, 10);
+        }
         return $this;
     }
 
@@ -182,10 +187,13 @@ class FileHeader
      */
     public function __toString()
     {
+        $origin = $this->immediateOrigin instanceof RoutingNumber ? (' ' . $this->immediateOrigin) :
+            $this->immediateOrigin;
+
         return $this->recordTypeCode .
         $this->priorityCode .
         ' ' . $this->immediateDestination . // Prefixed with a space
-        ' ' . $this->immediateOrigin .      // Prefixed with a space
+        $origin .
         $this->fileCreationDate .
         $this->fileCreationTime .
         $this->fileIdModifier .
