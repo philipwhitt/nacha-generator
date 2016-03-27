@@ -51,7 +51,7 @@ class FileHeader {
 			$this->immediateOrigin = new RoutingNumber($immediateOrigin);
 		}
 		else {
-			$this->immediateOrigin = new Number($immediateOrigin, 10);
+			$this->immediateOrigin = new String($immediateOrigin, 10);
 		}
 		return $this;
 	}
