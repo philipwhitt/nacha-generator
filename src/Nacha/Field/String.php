@@ -16,7 +16,7 @@ class String
             throw new InvalidFieldException('Value "' . $value . '" must be an string.');
         }
 
-        if (!preg_match('/^[\w\s-]*$/', $value)) {
+        if (preg_match('/[^\x20-\x7F]/', $value)) {
             throw new InvalidFieldException('Value "' . $value . '" has invalid ascii characters.');
         }
     }
