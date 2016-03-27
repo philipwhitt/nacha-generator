@@ -2,11 +2,12 @@
 
 namespace Nacha\Field;
 
-class CompanyName extends String {
+class CompanyName extends String
+{
+    public function __construct($value)
+    {
+        $value = strtolower($value) == 'check destroyed' ? strtoupper($value) : $value;
 
-	public function __construct($value) {
-		$value = strtolower($value) == 'check destroyed' ? strtoupper($value) : $value;
-
-		parent::__construct($value, 16);
-	}
+        parent::__construct($value, 16);
+    }
 }
