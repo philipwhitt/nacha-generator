@@ -70,7 +70,7 @@ class File {
 
         $fileFooter->setEntryHash($this->getHash());
         $fileFooter->setBatchCount(count($this->batches));
-        $fileFooter->setBlockCount(round($totalRecords / 10));
+        $fileFooter->setBlockCount(ceil($totalRecords / 10));
         $fileFooter->setEntryAddendaCount($totalEntryCount);
         $fileFooter->setTotalDebits($totalDebits);
         $fileFooter->setTotalCredits($totalCredits);
