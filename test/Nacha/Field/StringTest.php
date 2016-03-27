@@ -34,7 +34,7 @@ class StringTest extends \PHPUnit_Framework_TestCase
 		$str = new String($allValidAsciiChars, strlen($allValidAsciiChars));
 
 		// then
-		$this->assertEquals($allValidAsciiChars, (string)$str);
+		$this->assertEquals(strtoupper($allValidAsciiChars), (string)$str);
 	}
 
 	/**
