@@ -2,15 +2,17 @@
 
 namespace Nacha\Field;
 
-class StringTest extends \PHPUnit_Framework_TestCase {
+class StringTest extends \PHPUnit_Framework_TestCase
+{
 
-	public function testPadding() {
-		// given
-		$str = new String('Hello World', 32);
+    public function testPadding()
+    {
+        // given
+        $str = new String('Hello World', 32);
 
-		// then
-		$this->assertEquals('Hello World                     ', (string)$str);
-	}
+        // then
+        $this->assertEquals('HELLO WORLD                     ', (string)$str);
+    }
 
 	public function testOptional() {
 		// given
@@ -32,7 +34,7 @@ class StringTest extends \PHPUnit_Framework_TestCase {
 		$str = new String($allValidAsciiChars, strlen($allValidAsciiChars));
 
 		// then
-		$this->assertEquals($allValidAsciiChars, (string)$str);
+		$this->assertEquals(strtoupper($allValidAsciiChars), (string)$str);
 	}
 
 	/**
