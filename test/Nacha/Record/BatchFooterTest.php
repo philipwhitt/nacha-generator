@@ -36,4 +36,18 @@ class BatchFooterTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('820000000000091012980000000000000000000000001419871234                         099912340000001', (string)$batchFooter);
     }
 
+    public function testBatchFooter_LongCompanyId()
+    {
+        // given
+        $batchFooter = (new BatchFooter)
+            ->setServiceClassCode(200)
+            ->setEntryHash('9101298')
+            ->setCompanyIdNumber('9059999997')
+            ->setOriginatingDfiId('09991234')
+            ->setBatchNumber(1);
+
+        $this->assertEquals(94, strlen($batchFooter));
+        $this->assertEquals('820000000000091012980000000000000000000000009059999997                         099912340000001', (string)$batchFooter);
+    }
+
 }
