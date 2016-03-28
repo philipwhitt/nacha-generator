@@ -61,7 +61,7 @@ class BatchFooter
 
     public function setCompanyIdNumber($companyIdNumber)
     {
-        $this->companyIdNumber = new Number($companyIdNumber, 10);
+        $this->companyIdNumber = new String($companyIdNumber, 10);
         return $this;
     }
 
