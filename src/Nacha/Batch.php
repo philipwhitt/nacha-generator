@@ -4,8 +4,6 @@ namespace Nacha;
 
 use Nacha\Record\BatchFooter;
 use Nacha\Record\BatchHeader;
-use Nacha\Record\CcdEntry;
-use Nacha\Record\DebitEntry;
 use Nacha\Record\Entry;
 
 /**
@@ -21,10 +19,10 @@ class Batch
 
     private $header;
 
-    /** @var DebitEntry[] */
+    /** @var Entry[] */
     private $creditEntries = [];
 
-    /** @var CcdEntry[] */
+    /** @var Entry[] */
     private $debitEntries = [];
 
     public function __construct()
@@ -60,13 +58,13 @@ class Batch
         return $amount;
     }
 
-    public function addDebitEntry(DebitEntry $entry)
+    public function addDebitEntry(Entry $entry)
     {
         $this->debitEntries[] = $entry;
         return $this;
     }
 
-    public function addCreditEntry(CcdEntry $entry)
+    public function addCreditEntry(Entry $entry)
     {
         $this->creditEntries[] = $entry;
         return $this;

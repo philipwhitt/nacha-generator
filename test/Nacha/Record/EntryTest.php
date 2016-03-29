@@ -2,20 +2,20 @@
 
 namespace Nacha\Record;
 
-class DebitEntryTest extends \PHPUnit_Framework_TestCase
+class EntryTest extends \PHPUnit_Framework_TestCase
 {
 
     public function testEntry_AllFields()
     {
         // given
-        $entry = (new DebitEntry)
+        $entry = (new Entry)
             ->setTransactionCode(27)
             ->setReceivingDfiId('09101298')
             ->setCheckDigit(7)
             ->setDFiAccountNumber('46479999')
             ->setAmount('550.00')
-            ->setIndividualId('SomePerson1255')
-            ->setIdividualName('Alex Dubrovsky')
+            ->setSubjectId('SomePerson1255')
+            ->setSubjectName('Alex Dubrovsky')
             ->setDiscretionaryData('S')
             ->setAddendaRecordIndicator(0)
             ->setTraceNumber('09101298', 15);
@@ -27,13 +27,13 @@ class DebitEntryTest extends \PHPUnit_Framework_TestCase
     public function testEntry_OptionalFields()
     {
         // given
-        $entry = (new DebitEntry)
+        $entry = (new Entry)
             ->setTransactionCode(27)
             ->setReceivingDfiId('09101298')
             ->setCheckDigit(7)
             ->setDFiAccountNumber('46479999')
             ->setAmount('550.00')
-            ->setIdividualName('Alex Dubrovsky')
+            ->setSubjectName('Alex Dubrovsky')
             ->setAddendaRecordIndicator(0)
             ->setTraceNumber('09101298', 15);
 

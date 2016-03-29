@@ -2,8 +2,7 @@
 
 namespace Nacha;
 
-use Nacha\Record\CcdEntry;
-use Nacha\Record\DebitEntry;
+use Nacha\Record\Entry;
 
 /**
  * Class BatchTest
@@ -33,14 +32,14 @@ class BatchTest extends \PHPUnit_Framework_TestCase
     public function testDebitOnlyBatch()
     {
         // when
-        $this->batch->addDebitEntry((new DebitEntry)
+        $this->batch->addDebitEntry((new Entry)
             ->setTransactionCode(27)
             ->setReceivingDfiId('09101298')
             ->setCheckDigit(7)
             ->setDFiAccountNumber('46479999')
             ->setAmount('550.00')
-            ->setIndividualId('SomePerson1255')
-            ->setIdividualName('Alex Dubrovsky')
+            ->setSubjectId('SomePerson1255')
+            ->setSubjectName('Alex Dubrovsky')
             ->setDiscretionaryData('S')
             ->setAddendaRecordIndicator(0)
             ->setTraceNumber('99936340', 15));
@@ -60,14 +59,14 @@ class BatchTest extends \PHPUnit_Framework_TestCase
     public function testCreditOnlyBatch()
     {
         // when
-        $this->batch->addCreditEntry((new CcdEntry)
+        $this->batch->addCreditEntry((new Entry)
             ->setTransactionCode(27)
             ->setReceivingDfiId('09101298')
             ->setCheckDigit(7)
-            ->setReceivingDFiAccountNumber('46479999')
+            ->setDFiAccountNumber('46479999')
             ->setAmount('600.00')
-            ->setReceivingCompanyId('Location 23')
-            ->setReceivingCompanyName('Best Co 23')
+            ->setSubjectId('Location 23')
+            ->setSubjectName('Best Co 23')
             ->setDiscretionaryData('S')
             ->setAddendaRecordIndicator(0)
             ->setTraceNumber('09936340', 15));
@@ -87,26 +86,26 @@ class BatchTest extends \PHPUnit_Framework_TestCase
     public function testMixedBatch()
     {
         // when
-        $this->batch->addCreditEntry((new CcdEntry)
+        $this->batch->addCreditEntry((new Entry)
             ->setTransactionCode(27)
             ->setReceivingDfiId('09101298')
             ->setCheckDigit(7)
-            ->setReceivingDFiAccountNumber('46479999')
+            ->setDFiAccountNumber('46479999')
             ->setAmount('600.00')
-            ->setReceivingCompanyId('Location 23')
-            ->setReceivingCompanyName('Best Co 23')
+            ->setSubjectId('Location 23')
+            ->setSubjectName('Best Co 23')
             ->setDiscretionaryData('S')
             ->setAddendaRecordIndicator(0)
             ->setTraceNumber('09936340', 15));
 
-        $this->batch->addDebitEntry((new DebitEntry)
+        $this->batch->addDebitEntry((new Entry)
             ->setTransactionCode(27)
             ->setReceivingDfiId('09101298')
             ->setCheckDigit(7)
             ->setDFiAccountNumber('46479999')
             ->setAmount('550.00')
-            ->setIndividualId('SomePerson1255')
-            ->setIdividualName('Alex Dubrovsky')
+            ->setSubjectId('SomePerson1255')
+            ->setSubjectName('Alex Dubrovsky')
             ->setDiscretionaryData('S')
             ->setAddendaRecordIndicator(0)
             ->setTraceNumber('09936340', 15));
