@@ -9,11 +9,14 @@ use Nacha\Record\FileFooter;
 class File {
 
 	private $header;
+	private $lineEnding;
+	
 	/** @var Batch[] */
 	private $batches = [];
 
-	public function __construct() {
-		$this->header = new FileHeader();
+	public function __construct($lineEnding=null) {
+		$this->header     = new FileHeader();
+		$this->lineEnding = $lineEnding ? $lineEnding : LineEnding::UNIX;
 	}
 
 	public function getHeader() {
@@ -51,7 +54,7 @@ class File {
 			$totalDebits     += $batch->getTotalDebitAmount(); // is this total amount of debits, or entries?
 			$totalCredits    += $batch->getTotalCreditAmount(); // is this total amount of credits, or entries?
 
-			$batches .= $batch."\n";
+			$batches .= $batch.$this->lineEnding;
 		}
 
 		// block padding
@@ -61,7 +64,7 @@ class File {
 
 		$block = '';
 		for ($x=0; $x<$blocksNeeded % 10; $x++) {
-			$block .= (new Block)."\n";
+			$block .= (new Block).$this->lineEnding;
 		}
 
 		$fileFooter->setBlockCount(ceil($totalRecords / 10));
@@ -69,9 +72,9 @@ class File {
 		$fileFooter->setTotalDebits($totalDebits);
 		$fileFooter->setTotalCredits($totalCredits);
 
-		$output = $this->header."\n".$batches.$fileFooter."\n".$block;
+		$output = $this->header.$this->lineEnding.$batches.$fileFooter.$this->lineEnding.$block;
 
-		return rtrim($output, "\n");
+		return rtrim($output, $this->lineEnding);
 	}
 
 }

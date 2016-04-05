@@ -7,6 +7,7 @@ use Nacha\Record\BatchFooter;
 use Nacha\Record\DebitEntry;
 use Nacha\Record\CcdEntry;
 use Nacha\Record\Entry;
+use Nacha\LineEnding;
 
 /**
  * Class Batch
@@ -20,6 +21,7 @@ class Batch {
 	const DEBITS_ONLY  = 225;
 
 	private $header;
+	private $lineEnding;
 
 	/** @var DebitEntry[] */
 	private $creditEntries = [];
@@ -27,8 +29,9 @@ class Batch {
 	/** @var CcdEntry[] */
 	private $debitEntries = [];
 
-	public function __construct() {
+	public function __construct($lineEnding=null) {
 		$this->header = new BatchHeader();
+		$this->lineEnding = $lineEnding ? $lineEnding : LineEnding::UNIX;
 	}
 
 	public function getHeader() {
@@ -84,11 +87,11 @@ class Batch {
 			->setBatchNumber((string)$this->getHeader()->getBatchNumber());
 
 		foreach ($this->debitEntries as $entry) {
-			$entries .= (string)$entry."\n";
+			$entries .= (string)$entry.$this->lineEnding;
 		}
 
 		foreach ($this->creditEntries as $entry) {
-			$entries .= (string)$entry."\n";
+			$entries .= (string)$entry.$this->lineEnding;
 		}
 
 		// calculate service code
@@ -107,7 +110,7 @@ class Batch {
 		$footer->setTotalCreditAmount($this->getTotalCreditAmount());
 		$footer->setServiceClassCode((string)$this->header->getServiceClassCode());
 
-		return (string)$this->header."\n".$entries.$footer;
+		return (string)$this->header.$this->lineEnding.$entries.$footer;
 	}
 
 }
