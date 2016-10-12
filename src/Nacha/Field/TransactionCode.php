@@ -20,6 +20,14 @@ class TransactionCode extends Number {
 	const SAVINGS_DEBIT_PRENOTIFICATION  = 38; // Prenotification for a Savings debit
 	const SAVINGS_DEBIT_ZERO_DOLLAR      = 39; // Zero dollar with remittance into Savings
 
+	const GL_CREDIT                      = 42; // General ledger Deposit (Credit)
+	const GL_DEBIT                       = 47; // General ledger Withdrawal
+	const GL_CREDIT_PRENOTIFICATION      = 48; // Prenotification for General ledger Deposit (Credit)
+
+	const LOAN_CREDIT                    = 52; // Loan Deposit (Credit)
+	const LOAN_REVERSAL                  = 55; // Loan Reversal (Debit) (used rarely; reverses code 52)
+	const LOAN_CREDIT_PRENOTIFICATION    = 53; // Pre-Note: Loan Deposit (Credit)
+
 	public function __construct($value) {
 		parent::__construct($value, 2);
 
@@ -36,6 +44,12 @@ class TransactionCode extends Number {
 			self::SAVINGS_DEBIT,
 			self::SAVINGS_DEBIT_PRENOTIFICATION,
 			self::SAVINGS_DEBIT_ZERO_DOLLAR,
+			self::GL_CREDIT,
+			self::GL_DEBIT,
+			self::GL_CREDIT_PRENOTIFICATION,
+			self::LOAN_CREDIT,
+			self::LOAN_REVERSAL,
+			self::LOAN_CREDIT_PRENOTIFICATION,
 		];
 
 		if (!in_array($value, $valid)) {
