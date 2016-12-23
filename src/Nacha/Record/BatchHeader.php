@@ -2,7 +2,7 @@
 
 namespace Nacha\Record;
 
-use Nacha\Field\String;
+use Nacha\Field\StringHelper;
 use Nacha\Field\Number;
 use Nacha\Field\CompanyName;
 use Nacha\Field\StandardEntryClass;
@@ -83,11 +83,11 @@ class BatchHeader {
 		return $this;
 	}
 	public function setCompanyDiscretionaryData($companyDiscretionaryData) {
-		$this->companyDiscretionaryData = new String($companyDiscretionaryData, 20);
+		$this->companyDiscretionaryData = new StringHelper($companyDiscretionaryData, 20);
 		return $this;
 	}
 	public function setCompanyId($companyId) {
-		$this->companyId = new String($companyId, 10);
+		$this->companyId = new StringHelper($companyId, 10);
 		return $this;
 	}
 	public function setStandardEntryClassCode($standardEntryClassCode) {
@@ -99,15 +99,15 @@ class BatchHeader {
 		return $this;
 	}
 	public function setCompanyDescriptiveDate($companyDescriptiveDate) {
-		$this->companyDescriptiveDate = new String($companyDescriptiveDate, 6);
+		$this->companyDescriptiveDate = new StringHelper($companyDescriptiveDate, 6);
 		return $this;
 	}
 	public function setEffectiveEntryDate($effectiveEntryDate) {
-		$this->effectiveEntryDate = new String($effectiveEntryDate, 6);
+		$this->effectiveEntryDate = new StringHelper($effectiveEntryDate, 6);
 		return $this;
 	}
 	public function setSettlementDate($settlementDate) {
-		$this->settlementDate = new String($settlementDate, 3);
+		$this->settlementDate = new StringHelper($settlementDate, 3);
 		return $this;
 	}
 	public function setOriginatorStatusCode($originatorStatusCode) {
@@ -115,7 +115,7 @@ class BatchHeader {
 		return $this;
 	}
 	public function setOriginatingDFiId($originatingDFiId) {
-		$this->originatingDFiId = new String($originatingDFiId, 8);
+		$this->originatingDFiId = new StringHelper($originatingDFiId, 8);
 		return $this;
 	}
 	public function setBatchNumber($batchNumber) {

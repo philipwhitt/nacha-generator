@@ -2,7 +2,7 @@
 
 namespace Nacha\Field;
 
-class StandardEntryClass extends String {
+class StandardEntryClass extends StringHelper {
 
 	const ACK = 'ACK';
 	const ADV = 'ADV';

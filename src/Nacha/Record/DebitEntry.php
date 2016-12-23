@@ -2,7 +2,7 @@
 
 namespace Nacha\Record;
 
-use Nacha\Field\String;
+use Nacha\Field\StringHelper;
 use Nacha\Field\Number;
 
 // PPD, TEL, WEB debit
@@ -48,19 +48,19 @@ class DebitEntry extends Entry {
 		return $this;
 	}
 	public function setDFiAccountNumber($dFiAccountNumber) {
-		$this->dFiAccountNumber = new String($dFiAccountNumber, 17);
+		$this->dFiAccountNumber = new StringHelper($dFiAccountNumber, 17);
 		return $this;
 	}
 	public function setIndividualId($individualId) {
-		$this->individualId = new String($individualId, 15);
+		$this->individualId = new StringHelper($individualId, 15);
 		return $this;
 	}
 	public function setIdividualName($idividualName) {
-		$this->idividualName = new String($idividualName, 22);
+		$this->idividualName = new StringHelper($idividualName, 22);
 		return $this;
 	}
 	public function setDiscretionaryData($discretionaryData) {
-		$this->discretionaryData = new String($discretionaryData, 2);
+		$this->discretionaryData = new StringHelper($discretionaryData, 2);
 		return $this;
 	}
 	public function setAddendaRecordIndicator($addendaRecordIndicator) {
