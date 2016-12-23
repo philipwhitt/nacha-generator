@@ -2,7 +2,7 @@
 
 namespace Nacha\Field;
 
-class CompanyName extends String
+class CompanyName extends Str
 {
     public function __construct($value)
     {

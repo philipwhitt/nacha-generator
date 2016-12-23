@@ -4,7 +4,7 @@ namespace Nacha\Record;
 
 use Nacha\Field\Amount;
 use Nacha\Field\Number;
-use Nacha\Field\String;
+use Nacha\Field\Str;
 use Nacha\Field\TransactionCode;
 
 class Entry
@@ -106,25 +106,25 @@ class Entry
 
     public function setDFiAccountNumber($dFiAccountNumber)
     {
-        $this->dFiAccountNumber = new String($dFiAccountNumber, 17);
+        $this->dFiAccountNumber = new Str($dFiAccountNumber, 17);
         return $this;
     }
 
      public function setSubjectId($subjectId)
     {
-        $this->subjectId = new String($subjectId, 15);
+        $this->subjectId = new Str($subjectId, 15);
         return $this;
     }
 
     public function setSubjectName($subjectName)
     {
-        $this->subjectName = new String($subjectName, 22);
+        $this->subjectName = new Str($subjectName, 22);
         return $this;
     }
 
     public function setDiscretionaryData($discretionaryData)
     {
-        $this->discretionaryData = new String($discretionaryData, 2);
+        $this->discretionaryData = new Str($discretionaryData, 2);
         return $this;
     }
 

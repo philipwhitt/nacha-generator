@@ -3,7 +3,7 @@
 namespace Nacha\Record;
 
 use Nacha\Field\Number;
-use Nacha\Field\String;
+use Nacha\Field\Str;
 
 class BatchFooter
 {
@@ -22,7 +22,7 @@ class BatchFooter
     public function __construct()
     {
         // defaults/optional
-        $this->reserved = new String('', 6);
+        $this->reserved = new Str('', 6);
         $this->setEntryAddendaCount(0);
         $this->setMessageAuthenticationCode('');
         $this->setTotalDebitAmount(0);
@@ -61,13 +61,13 @@ class BatchFooter
 
     public function setCompanyIdNumber($companyIdNumber)
     {
-        $this->companyIdNumber = new String($companyIdNumber, 10);
+        $this->companyIdNumber = new Str($companyIdNumber, 10);
         return $this;
     }
 
     public function setMessageAuthenticationCode($messageAuthenticationCode)
     {
-        $this->messageAuthenticationCode = new String($messageAuthenticationCode, 19);
+        $this->messageAuthenticationCode = new Str($messageAuthenticationCode, 19);
         return $this;
     }
 

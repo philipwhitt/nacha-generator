@@ -2,7 +2,7 @@
 
 namespace Nacha\Field;
 
-class CompanyEntryDescription extends String
+class CompanyEntryDescription extends Str
 {
     // upper case trigger words
     private $triggers = [

@@ -2,7 +2,7 @@
 
 namespace Nacha\Field;
 
-class FileIdModifier extends String
+class FileIdModifier extends Str
 {
     public function __construct($value)
     {

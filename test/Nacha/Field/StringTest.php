@@ -8,7 +8,7 @@ class StringTest extends \PHPUnit_Framework_TestCase
     public function testPadding()
     {
         // given
-        $str = new String('Hello World', 32);
+        $str = new Str('Hello World', 32);
 
         // then
         $this->assertEquals('HELLO WORLD                     ', (string)$str);
@@ -16,7 +16,7 @@ class StringTest extends \PHPUnit_Framework_TestCase
 
 	public function testOptional() {
 		// given
-		$str = new String('', 10);
+		$str = new Str('', 10);
 
 		// then
 		$this->assertEquals('          ', (string)$str);
@@ -31,7 +31,7 @@ class StringTest extends \PHPUnit_Framework_TestCase
 		}
 
 		// when
-		$str = new String($allValidAsciiChars, strlen($allValidAsciiChars));
+		$str = new Str($allValidAsciiChars, strlen($allValidAsciiChars));
 
 		// then
 		$this->assertEquals(strtoupper($allValidAsciiChars), (string)$str);
@@ -41,7 +41,7 @@ class StringTest extends \PHPUnit_Framework_TestCase
 	 * @expectedException \Nacha\Field\InvalidFieldException
 	 */
 	public function testNotString() {
-		new String(12, 32);
+		new Str(12, 32);
 	}
 
 	public function testInvalidCharacter() {
@@ -50,7 +50,7 @@ class StringTest extends \PHPUnit_Framework_TestCase
 			$invalid = 'validtext'.chr($ascii);
 
 			try {
-				new String($invalid, strlen($invalid));
+				new Str($invalid, strlen($invalid));
 
 				$this->assertTrue(false, 'Should throw an exception for invalid ASCII:'.$ascii);
 

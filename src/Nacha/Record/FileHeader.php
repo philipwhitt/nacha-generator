@@ -2,7 +2,7 @@
 
 namespace Nacha\Record;
 
-use Nacha\Field\String;
+use Nacha\Field\Str;
 use Nacha\Field\Number;
 use Nacha\Field\RoutingNumber;
 use Nacha\Field\FileIdModifier;
@@ -75,7 +75,7 @@ class FileHeader
             $this->immediateOrigin = new RoutingNumber($immediateOrigin);
         }
         else if(strlen($immediateOrigin) == 10) {
-            $this->immediateOrigin = new String($immediateOrigin, 10);
+            $this->immediateOrigin = new Str($immediateOrigin, 10);
         }
         return $this;
     }
@@ -86,7 +86,7 @@ class FileHeader
      */
     public function setFileCreationDate($fileCreationDate)
     {
-        $this->fileCreationDate = new String($fileCreationDate, 6);
+        $this->fileCreationDate = new Str($fileCreationDate, 6);
         return $this;
     }
 
@@ -96,7 +96,7 @@ class FileHeader
      */
     public function setFileCreationTime($fileCreationTime)
     {
-        $this->fileCreationTime = new String($fileCreationTime, 4);
+        $this->fileCreationTime = new Str($fileCreationTime, 4);
         return $this;
     }
 
@@ -146,7 +146,7 @@ class FileHeader
      */
     public function setImmediateDestinationName($immediateDestinationName)
     {
-        $this->immediateDestinationName = new String($immediateDestinationName, 23);
+        $this->immediateDestinationName = new Str($immediateDestinationName, 23);
         return $this;
     }
 
@@ -156,7 +156,7 @@ class FileHeader
      */
     public function setImmediateOriginName($immediateOriginName)
     {
-        $this->immediateOriginName = new String($immediateOriginName, 23);
+        $this->immediateOriginName = new Str($immediateOriginName, 23);
         return $this;
     }
 
@@ -166,7 +166,7 @@ class FileHeader
      */
     public function setReferenceCode($referenceCode)
     {
-        $this->referenceCode = new String($referenceCode, 8);
+        $this->referenceCode = new Str($referenceCode, 8);
         return $this;
     }
 
