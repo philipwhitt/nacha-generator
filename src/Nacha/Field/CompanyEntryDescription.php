@@ -2,7 +2,7 @@
 
 namespace Nacha\Field;
 
-class CompanyEntryDescription extends String {
+class CompanyEntryDescription extends StringHelper {
 
 	// upper case trigger words
 	private $triggers = ["reversal", "reclaim", "nonsettled", "autoenroll", "redepcheck", "no check", "return fee", "hcclaimpmt"];
