@@ -16,7 +16,7 @@ class File {
 
 	public function __construct($lineEnding=null) {
 		$this->header     = new FileHeader();
-		$this->lineEnding = $lineEnding ? $lineEnding : LineEnding::UNIX;
+		$this->lineEnding = is_null($lineEnding) ? LineEnding::UNIX : $lineEnding;
 	}
 
 	public function getHeader() {
