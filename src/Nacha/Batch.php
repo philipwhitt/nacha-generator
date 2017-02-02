@@ -31,7 +31,7 @@ class Batch {
 
 	public function __construct($lineEnding=null) {
 		$this->header = new BatchHeader();
-		$this->lineEnding = $lineEnding ? $lineEnding : LineEnding::UNIX;
+		$this->lineEnding = is_null($lineEnding) ? LineEnding::UNIX : $lineEnding;
 	}
 
 	public function getHeader() {

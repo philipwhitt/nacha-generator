@@ -2,7 +2,7 @@
 
 namespace Nacha\Record;
 
-use Nacha\Field\String;
+use Nacha\Field\StringHelper;
 use Nacha\Field\Number;
 
 class BatchFooter {
@@ -21,7 +21,7 @@ class BatchFooter {
 
 	public function __construct() {
 		// defaults/optional
-		$this->reserved = new String('', 6);
+		$this->reserved = new StringHelper('', 6);
 		$this->setEntryAddendaCount(0);
 		$this->setMessageAuthenticationCode('');
 		$this->setTotalDebitAmount(0);
@@ -53,7 +53,7 @@ class BatchFooter {
 		return $this;
 	}
 	public function setMessageAuthenticationCode($messageAuthenticationCode) {
-		$this->messageAuthenticationCode = new String($messageAuthenticationCode, 19);
+		$this->messageAuthenticationCode = new StringHelper($messageAuthenticationCode, 19);
 		return $this;
 	}
 	public function setOriginatingDfiId($originatingDfiId) {

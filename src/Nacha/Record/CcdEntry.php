@@ -2,7 +2,7 @@
 
 namespace Nacha\Record;
 
-use Nacha\Field\String;
+use Nacha\Field\StringHelper;
 use Nacha\Field\Number;
 
 // Cash Collection and Disbursement Entry (CCD)
@@ -48,19 +48,19 @@ class CcdEntry extends Entry {
 		return $this;
 	}
 	public function setReceivingDFiAccountNumber($receivingDFiAccountNumber) {
-		$this->receivingDFiAccountNumber = new String($receivingDFiAccountNumber, 17);
+		$this->receivingDFiAccountNumber = new StringHelper($receivingDFiAccountNumber, 17);
 		return $this;
 	}
 	public function setReceivingCompanyId($receivingCompanyId) {
-		$this->receivingCompanyId = new String($receivingCompanyId, 15);
+		$this->receivingCompanyId = new StringHelper($receivingCompanyId, 15);
 		return $this;
 	}
 	public function setReceivingCompanyName($receivingCompanyName) {
-		$this->receivingCompanyName = new String($receivingCompanyName, 22);
+		$this->receivingCompanyName = new StringHelper($receivingCompanyName, 22);
 		return $this;
 	}
 	public function setDiscretionaryData($discretionaryData) {
-		$this->discretionaryData = new String($discretionaryData, 2);
+		$this->discretionaryData = new StringHelper($discretionaryData, 2);
 		return $this;
 	}
 	public function setAddendaRecordIndicator($addendaRecordIndicator) {

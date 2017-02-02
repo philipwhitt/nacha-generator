@@ -2,7 +2,7 @@
 
 namespace Nacha\Record;
 
-use Nacha\Field\String;
+use Nacha\Field\StringHelper;
 use Nacha\Field\Number;
 
 class FileFooter {
@@ -18,7 +18,7 @@ class FileFooter {
 
 	public function __construct() {
 		// defaults
-		$this->reserved = new String('', 39);
+		$this->reserved = new StringHelper('', 39);
 		$this->setBatchCount(0);
 		$this->setBlockCount(0);
 		$this->setEntryAddendaCount(0);
