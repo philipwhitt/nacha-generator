@@ -69,7 +69,6 @@ class Batch {
 			}
 			$amount += $entry->getAmount()->getValue();
 		}
-		print_r($amount);
 		return $amount;
 	}
 
