@@ -10,7 +10,7 @@ https://www.nacha.org/system/files/resources/AAP201%20-%20ACH%20File%20Formattin
 ```
 {
 	"require" : {
-		"nacha/file-generator" : "dev-master"
+		"nacha/file-generator" : "1.*"
 	}
 }
 ```
