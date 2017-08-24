@@ -1,4 +1,4 @@
-[![Build Status](https://drone.io/github.com/philipwhitt/nacha-generator/status.png)](https://drone.io/github.com/philipwhitt/nacha-generator/latest)
+[![Build Status](https://travis-ci.org/philipwhitt/nacha-generator.svg?branch=master)](https://travis-ci.org/philipwhitt/nacha-generator)
 
 NACHA File Generator
 ====================
