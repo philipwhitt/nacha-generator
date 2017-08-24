@@ -11,7 +11,13 @@ abstract class Entry {
 	protected $recordTypeCode = 6;
 	protected $receivingDfiId;
 	protected $traceNumber;
+	/**
+	 * @var TransactionCode transactionCode
+	 */
 	protected $transactionCode;
+	/**
+	 * @var Amount amount
+	 */
 	protected $amount;
 
 	private $hashable = 0;
@@ -29,12 +35,21 @@ abstract class Entry {
 	public function getHashable() {
 		return $this->hashable;
 	}
+
+	/**
+	 * @return Amount
+	 */
 	public function getAmount() {
 		return $this->amount;
 	}
+
+	/**
+	 * @return TransactionCode
+	 */
 	public function getTransactionCode() {
 		return $this->transactionCode;
 	}
+
 	public final function getTraceNumber() {
 		return $this->traceNumber;
 	}
