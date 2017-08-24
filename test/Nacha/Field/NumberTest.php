@@ -20,6 +20,12 @@ class NumberTest extends \PHPUnit_Framework_TestCase {
 		$this->assertEquals('1234567891', (string)$nbr);
 	}
 
+	public function testGetValue() {
+		$nbr = new Number(500,3);
+
+		$this->assertEquals(500,$nbr->getValue());
+	}
+
 	/**
 	 * @expectedException \Nacha\Field\InvalidFieldException
 	 */
