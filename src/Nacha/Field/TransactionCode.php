@@ -2,8 +2,7 @@
 
 namespace Nacha\Field;
 
-class TransactionCode extends Number
-{
+class TransactionCode extends Number {
 
 	const CHECKING_CREDIT_RETURN = 21;
 	const CHECKING_DEPOSIT = 22; // Deposit destined for a Checking Account
@@ -45,8 +44,7 @@ class TransactionCode extends Number
 	const LOAN_DEBIT = 55;
 	const LOAN_DEBIT_RETURN = 56;
 
-	public function __construct($value)
-	{
+	public function __construct($value) {
 		parent::__construct($value, 2);
 
 		if (!self::isValid($value)) {
@@ -58,8 +56,7 @@ class TransactionCode extends Number
 	 * @param int $code
 	 * @return bool
 	 */
-	public static function isCredit($code)
-	{
+	public static function isCredit($code) {
 		return in_array($code, self::getCreditTransactionCodes());
 	}
 
@@ -67,8 +64,7 @@ class TransactionCode extends Number
 	 * @param int $code
 	 * @return bool
 	 */
-	public static function isDebit($code)
-	{
+	public static function isDebit($code) {
 		return in_array($code, self::getDebitTransactionCodes());
 	}
 
@@ -76,13 +72,11 @@ class TransactionCode extends Number
 	 * @param $code
 	 * @return bool
 	 */
-	public static function isValid($code)
-	{
+	public static function isValid($code) {
 		return in_array($code, array_merge(self::getCreditTransactionCodes(), self::getDebitTransactionCodes()));
 	}
 
-	private static function getCreditTransactionCodes()
-	{
+	private static function getCreditTransactionCodes() {
 		return [
 			self::CHECKING_CREDIT_RETURN,
 			self::CHECKING_DEPOSIT,
