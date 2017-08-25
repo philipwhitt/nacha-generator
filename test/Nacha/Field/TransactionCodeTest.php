@@ -47,11 +47,9 @@ class TransactionCodeTest extends \PHPUnit_Framework_TestCase {
 
 	public function testAllDebitTransactionCodesAreRecognized() {
 		foreach($this->creditCodes as $code) {
-			print_r($code);
 			$this->assertFalse(TransactionCode::isDebit($code));
 		}
 		foreach($this->debitCodes as $code) {
-			print_r($code);
 			$this->assertTrue(TransactionCode::isDebit($code));
 		}
 	}
