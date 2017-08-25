@@ -139,8 +139,8 @@ class Batch {
 	 * @return bool
 	 */
 	private function isDebit(Entry $entry) {
-		$creditEntryTransactionCodes = [26,27,28,29,36,37,38,39,46,47,48,49,55,56];
-		return in_array($entry->getTransactionCode()->getValue(),$creditEntryTransactionCodes);
+		return TransactionCode::isDebit($entry->getTransactionCode()->getValue());
+
 	}
 
 	/**
@@ -148,8 +148,7 @@ class Batch {
 	 * @return bool
 	 */
 	private function isCredit(Entry $entry) {
-		$debitEntryTransactionCodes = [21,22,23,24,31,32,33,34,41,42,43,44,51,52,53,54];
-		return in_array($entry->getTransactionCode()->getValue(),$debitEntryTransactionCodes);
+		return TransactionCode::isCredit($entry->getTransactionCode()->getValue());
 	}
 
 	/**
