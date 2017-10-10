@@ -58,7 +58,7 @@ $ ./vendor/bin/phpunit -c test/ci.xml
 There is limited validation for field inputs. Strings that are too long will be truncated. Required/mandatory fields are currently not enforced.
 
 Other missing elements:
-- ~~Addenda support~~ added in v1.8+
+- ~~Addenda support~~ added in v1.9+
 - BOC, ARC, POP Entry records
 - Corporate Trade Exchange Entries
 - Point of Sale Entries
