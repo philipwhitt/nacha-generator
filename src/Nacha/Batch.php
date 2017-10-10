@@ -63,12 +63,15 @@ class Batch {
 	 */
 	public function getTotalDebitAmount() {
 		$amount = 0;
+
 		foreach ($this->entries as $entry) {
 			if(!$this->isDebit($entry)) {
 				continue;
 			}
+
 			$amount += $entry->getAmount()->getValue();
 		}
+
 		return $amount;
 	}
 
@@ -77,12 +80,15 @@ class Batch {
 	 */
 	public function getTotalCreditAmount() {
 		$amount = 0;
+
 		foreach ($this->entries as $entry) {
-			if(!$this->isCredit($entry)) {
+			if (!$this->isCredit($entry)) {
 				continue;
 			}
+
 			$amount += $entry->getAmount()->getValue();
 		}
+
 		return $amount;
 	}
 
@@ -111,12 +117,14 @@ class Batch {
 	public function addEntry(Entry $entry) {
 		$this->entries[] = $entry;
 
-		if($this->isCredit($entry)) {
+		if ($this->isCredit($entry)) {
 			$this->creditEntryCount++;
 		}
-		if($this->isDebit($entry)) {
+
+		if ($this->isDebit($entry)) {
 			$this->debitEntryCount++;
 		}
+
 		return $this;
 	}
 
@@ -124,7 +132,7 @@ class Batch {
 	 * @return int
 	 */
 	public function getEntryHash() {
-		$hash    = 0;
+		$hash = 0;
 
 		foreach ($this->entries as $entry) {
 			$hash += $entry->getHashable();
@@ -166,22 +174,46 @@ class Batch {
 	}
 
 	private function getServiceClassCode() {
-		if($this->hasOnlyCreditEntries()) {
-			return self::CREDITS_ONLY;
+		$secCode = self::MIXED;
+
+		if ($this->hasOnlyCreditEntries()) {
+			$secCode = self::CREDITS_ONLY;
 		}
-		if($this->hasOnlyDebitEntries()) {
-			return self::DEBITS_ONLY;
+
+		if ($this->hasOnlyDebitEntries()) {
+			$secCode = self::DEBITS_ONLY;
 		}
-		return self::MIXED;
+
+		return $secCode;
 	}
 
 	private function formatEntries() {
 		$entries = '';
-		foreach($this->entries as $entry) {
-			$entries.=(string)$entry.$this->lineEnding;
+
+		foreach ($this->entries as $entry) {
+			$entries .= (string)$entry.$this->lineEnding;
+
+			if (count($entry->getAddendas()) > 0) {
+				$entries .= $this->formatAddendas($entry);
+			}
 		}
+
 		return $entries;
 	}
+
+	private function formatAddendas($entry) {
+		$addendas = '';
+
+		foreach ($entry->getAddendas() as $index => $addenda) {
+			$addenda->setAddendaSequenceNumber($index+1); // offset for 0 index
+			$addenda->setEntryDetailSequenceNumber($entry->getTraceNumber());
+
+			$addendas .= (string)$addenda.$this->lineEnding;
+		}
+
+		return $addendas;
+	}
+
 	public function __toString() {
 		$this->header->setServiceClassCode($this->getServiceClassCode());
 

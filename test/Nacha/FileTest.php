@@ -4,6 +4,7 @@ namespace Nacha;
 
 use Nacha\Record\DebitEntry;
 use Nacha\Record\CcdEntry;
+use Nacha\Record\Addenda;
 
 class FileTest extends \PHPUnit_Framework_TestCase {
 
@@ -44,10 +45,12 @@ class FileTest extends \PHPUnit_Framework_TestCase {
 		// then
 		$this->assertEquals("101 051000033 0599999970602102232A094101ImdDest Name           ImdOriginName          Referenc
 5225MY BEST COMP    INCLUDES OVERTIME   1419871234PPDPAYROLL   0602  0112     2010212340000001
-62709101298746479999         0000055000SomePerson1255 Alex Dubrovsky        S 0999363400000015
+62709101298746479999         0000055000SomePerson1255 Alex Dubrovsky        S 1999363400000015
+705Lorem Ipsum                                                                     00010000015
 822500000100091012980000000550000000000000001419871234                         010212340000001
 5225MY BEST COMP    INCLUDES OVERTIME   1419871234PPDEXPENSES  0602  0112     2010212340000002
-62709101298746479999         0000055000SomePerson1255 Alex Dubrovsky        S 0999363400000015
+62709101298746479999         0000055000SomePerson1255 Alex Dubrovsky        S 1999363400000015
+705Lorem Ipsum                                                                     00010000015
 822500000100091012980000000550000000000000001419871234                         010212340000002
 9000002000001000000020018202596000000110000000000000000                                       
 9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
@@ -102,10 +105,12 @@ class FileTest extends \PHPUnit_Framework_TestCase {
 		// then
 		$this->assertEquals("101 051000033 0599999970602102232A094101ImdDest Name           ImdOriginName          Referenc
 5225MY BEST COMP    INCLUDES OVERTIME   1419871234PPDPAYROLL   0602  0112     2010212340000001
-62709101298746479999         0000055000SomePerson1255 Alex Dubrovsky        S 0999363400000015
+62709101298746479999         0000055000SomePerson1255 Alex Dubrovsky        S 1999363400000015
+705Lorem Ipsum                                                                     00010000015
 822500000100091012980000000550000000000000001419871234                         010212340000001
 5225MY BEST COMP    INCLUDES OVERTIME   1419871234PPDEXPENSES  0602  0112     2010212340000002
-62709101298746479999         0000055000SomePerson1255 Alex Dubrovsky        S 0999363400000015
+62709101298746479999         0000055000SomePerson1255 Alex Dubrovsky        S 1999363400000015
+705Lorem Ipsum                                                                     00010000015
 62709101298746479999         0000055000SomePerson1255 Philip Whitt          S 0999363400000015
 62709101298746479999         0000055000SomePerson1255 Philip Whitt          S 0999363400000015
 822500000300273038940000001650000000000000001419871234                         010212340000002
@@ -136,13 +141,16 @@ class FileTest extends \PHPUnit_Framework_TestCase {
 		// then
 		$this->assertEquals("101 051000033 0599999970602102232A094101ImdDest Name           ImdOriginName          Referenc
 5225MY BEST COMP    INCLUDES OVERTIME   1419871234PPDPAYROLL   0602  0112     2010212340000001
-62709101298746479999         0000055000SomePerson1255 Alex Dubrovsky        S 0999363400000015
+62709101298746479999         0000055000SomePerson1255 Alex Dubrovsky        S 1999363400000015
+705Lorem Ipsum                                                                     00010000015
 822500000100091012980000000550000000000000001419871234                         010212340000001
 5225MY BEST COMP    INCLUDES OVERTIME   1419871234PPDPAYROLL   0602  0112     2010212340000002
-62709101298746479999         0000055000SomePerson1255 Alex Dubrovsky        S 0999363400000015
+62709101298746479999         0000055000SomePerson1255 Alex Dubrovsky        S 1999363400000015
+705Lorem Ipsum                                                                     00010000015
 822500000100091012980000000550000000000000001419871234                         010212340000002
 5225MY BEST COMP    INCLUDES OVERTIME   1419871234PPDEXPENSES  0602  0112     2010212340000003
-62709101298746479999         0000055000SomePerson1255 Alex Dubrovsky        S 0999363400000015
+62709101298746479999         0000055000SomePerson1255 Alex Dubrovsky        S 1999363400000015
+705Lorem Ipsum                                                                     00010000015
 62709101298746479999         0000055000SomePerson1255 Philip Whitt          S 0999363400000015
 822500000200182025960000001100000000000000001419871234                         010212340000003
 9000003000002000000040036405192000000220000000000000000                                       
@@ -169,7 +177,7 @@ class FileTest extends \PHPUnit_Framework_TestCase {
 			->setOriginatorStatusCode('2')
 			->setOriginatingDFiId('01021234');
 
-		$batch->addDebitEntry((new DebitEntry)
+		$entry = (new DebitEntry)
 			->setTransactionCode(27)
 			->setReceivingDfiId('09101298')
 			->setCheckDigit(7)
@@ -179,7 +187,12 @@ class FileTest extends \PHPUnit_Framework_TestCase {
 			->setIdividualName('Alex Dubrovsky')
 			->setDiscretionaryData('S')
 			->setAddendaRecordIndicator(0)
-			->setTraceNumber('99936340', 15));
+			->setTraceNumber('99936340', 15);
+
+		$entry->addAddenda((new Addenda)
+			->setPaymentRelatedInformation('Lorem Ipsum'));
+
+		$batch->addEntry($entry);
 
 		return $batch;
 	}
