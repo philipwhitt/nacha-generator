@@ -55,7 +55,12 @@ class Batch {
 	 * @return int
 	 */
 	public function getTotalEntryCount() {
-		return count($this->entries);
+		$total = 0;
+		foreach ($this->entries as $entry) {
+			$total++;
+			$total += count($entry->getAddendas());
+		}
+		return $total;
 	}
 
 	/**
