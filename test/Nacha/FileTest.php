@@ -45,12 +45,12 @@ class FileTest extends \PHPUnit_Framework_TestCase {
 		// then
 		$this->assertEquals("101 051000033 0599999970602102232A094101ImdDest Name           ImdOriginName          Referenc
 5225MY BEST COMP    INCLUDES OVERTIME   1419871234PPDPAYROLL   0602  0112     2010212340000001
-62709101298746479999         0000055000SomePerson1255 Alex Dubrovsky        S 1999363400000015
-705Lorem Ipsum                                                                     00010000015
+62709101298746479999         0000055000SomePerson1255 Alex Dubrovsky        S 1999363400000001
+705Lorem Ipsum                                                                     00010000001
 822500000200091012980000000550000000000000001419871234                         010212340000001
 5225MY BEST COMP    INCLUDES OVERTIME   1419871234PPDEXPENSES  0602  0112     2010212340000002
-62709101298746479999         0000055000SomePerson1255 Alex Dubrovsky        S 1999363400000015
-705Lorem Ipsum                                                                     00010000015
+62709101298746479999         0000055000SomePerson1255 Alex Dubrovsky        S 1999363400000001
+705Lorem Ipsum                                                                     00010000001
 822500000200091012980000000550000000000000001419871234                         010212340000002
 9000002000001000000040018202596000000110000000000000000                                       ", (string)$this->file);
 	}
@@ -82,7 +82,7 @@ class FileTest extends \PHPUnit_Framework_TestCase {
 			->setIdividualName('Philip Whitt')
 			->setDiscretionaryData('S')
 			->setAddendaRecordIndicator(0)
-			->setTraceNumber('99936340', 15));
+			->setTraceNumber('99936340', 2));
 
 		$batchA->addDebitEntry((new DebitEntry)
 			->setTransactionCode(27)
@@ -94,7 +94,7 @@ class FileTest extends \PHPUnit_Framework_TestCase {
 			->setIdividualName('Philip Whitt')
 			->setDiscretionaryData('S')
 			->setAddendaRecordIndicator(0)
-			->setTraceNumber('99936340', 15));
+			->setTraceNumber('99936340', 3));
 
 		// when
 		$this->file->addBatch($this->getBatch());
@@ -103,14 +103,14 @@ class FileTest extends \PHPUnit_Framework_TestCase {
 		// then
 		$this->assertEquals("101 051000033 0599999970602102232A094101ImdDest Name           ImdOriginName          Referenc
 5225MY BEST COMP    INCLUDES OVERTIME   1419871234PPDPAYROLL   0602  0112     2010212340000001
-62709101298746479999         0000055000SomePerson1255 Alex Dubrovsky        S 1999363400000015
-705Lorem Ipsum                                                                     00010000015
+62709101298746479999         0000055000SomePerson1255 Alex Dubrovsky        S 1999363400000001
+705Lorem Ipsum                                                                     00010000001
 822500000200091012980000000550000000000000001419871234                         010212340000001
 5225MY BEST COMP    INCLUDES OVERTIME   1419871234PPDEXPENSES  0602  0112     2010212340000002
-62709101298746479999         0000055000SomePerson1255 Alex Dubrovsky        S 1999363400000015
-705Lorem Ipsum                                                                     00010000015
-62709101298746479999         0000055000SomePerson1255 Philip Whitt          S 0999363400000015
-62709101298746479999         0000055000SomePerson1255 Philip Whitt          S 0999363400000015
+62709101298746479999         0000055000SomePerson1255 Alex Dubrovsky        S 1999363400000001
+705Lorem Ipsum                                                                     00010000001
+62709101298746479999         0000055000SomePerson1255 Philip Whitt          S 0999363400000002
+62709101298746479999         0000055000SomePerson1255 Philip Whitt          S 0999363400000003
 822500000400273038940000001650000000000000001419871234                         010212340000002
 9000002000002000000060036405192000000220000000000000000                                       
 9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
@@ -146,7 +146,7 @@ class FileTest extends \PHPUnit_Framework_TestCase {
 			->setIdividualName('Alex Dubrovsky')
 			->setDiscretionaryData('S')
 			->setAddendaRecordIndicator(0)
-			->setTraceNumber('99936340', 15);
+			->setTraceNumber('99936340', 1);
 
 		$entry->addAddenda((new Addenda)
 			->setPaymentRelatedInformation('Lorem Ipsum'));
