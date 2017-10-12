@@ -5,6 +5,7 @@ namespace Nacha;
 use Nacha\Record\DebitEntry;
 use Nacha\Record\CcdEntry;
 use Nacha\Record\Addenda;
+use Nacha\Field\TransactionCode;
 
 class FileTest extends \PHPUnit_Framework_TestCase {
 
@@ -97,7 +98,7 @@ class FileTest extends \PHPUnit_Framework_TestCase {
 		$batchA = $this->getBatch();
 		$batchA->getHeader()->setCompanyEntryDescription('EXPENSES');
 		$batchA->addDebitEntry((new DebitEntry)
-			->setTransactionCode(27)
+			->setTransactionCode(TransactionCode::CHECKING_DEBIT)
 			->setReceivingDfiId('09101298')
 			->setCheckDigit(7)
 			->setDFiAccountNumber('46479999')
@@ -109,7 +110,7 @@ class FileTest extends \PHPUnit_Framework_TestCase {
 			->setTraceNumber('99936340', 2));
 
 		$batchA->addDebitEntry((new DebitEntry)
-			->setTransactionCode(27)
+			->setTransactionCode(TransactionCode::CHECKING_DEBIT)
 			->setReceivingDfiId('09101298')
 			->setCheckDigit(7)
 			->setDFiAccountNumber('46479999')
@@ -161,7 +162,7 @@ class FileTest extends \PHPUnit_Framework_TestCase {
 			->setOriginatingDFiId('01021234');
 
 		$entry = (new DebitEntry)
-			->setTransactionCode(27)
+			->setTransactionCode(TransactionCode::CHECKING_DEBIT)
 			->setReceivingDfiId('09101298')
 			->setCheckDigit(7)
 			->setDFiAccountNumber('46479999')
