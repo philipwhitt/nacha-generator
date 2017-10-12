@@ -6,7 +6,7 @@ NACHA File Generator
 Based on documentation from NACHA:
 https://www.nacha.org/system/files/resources/AAP201%20-%20ACH%20File%20Formatting.pdf
 
-###Install With Composer
+### Install With Composer
 ```
 {
 	"require" : {
@@ -15,7 +15,7 @@ https://www.nacha.org/system/files/resources/AAP201%20-%20ACH%20File%20Formattin
 }
 ```
 
-###Usage
+### Usage
 ```php
 <?php
 use Nacha\File;
@@ -48,17 +48,17 @@ $output = (string)$file;
 
 For complete examples see test/Nacha/FileTest.php
 
-###Tests
+### Tests
 ```
 $ ./vendor/bin/phpunit -c test/ci.xml
 ```
 
-###Todos
+### Todos
 
-Currently, there is no validation for field inputs. Strings that are too long will be truncated. Required/mandatory fields are currently not enforced.
+There is limited validation for field inputs. Strings that are too long will be truncated. Required/mandatory fields are currently not enforced.
 
 Other missing elements:
-- Addenda support
+- ~~Addenda support~~ added in v1.9+
 - BOC, ARC, POP Entry records
 - Corporate Trade Exchange Entries
 - Point of Sale Entries

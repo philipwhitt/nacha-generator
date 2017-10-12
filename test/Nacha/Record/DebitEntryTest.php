@@ -2,12 +2,14 @@
 
 namespace Nacha\Record;
 
+use Nacha\Field\TransactionCode;
+
 class DebitEntryTest extends \PHPUnit_Framework_TestCase {
 
 	public function testEntry_AllFields() {
 		// given
 		$entry = (new DebitEntry)
-			->setTransactionCode(27)
+			->setTransactionCode(TransactionCode::CHECKING_DEBIT)
 			->setReceivingDfiId('09101298')
 			->setCheckDigit(7)
 			->setDFiAccountNumber('46479999')
@@ -25,7 +27,7 @@ class DebitEntryTest extends \PHPUnit_Framework_TestCase {
 	public function testEntry_OptionalFields() {
 		// given
 		$entry = (new DebitEntry)
-			->setTransactionCode(27)
+			->setTransactionCode(TransactionCode::CHECKING_DEBIT)
 			->setReceivingDfiId('09101298')
 			->setCheckDigit(7)
 			->setDFiAccountNumber('46479999')
