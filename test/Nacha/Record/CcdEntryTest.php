@@ -2,12 +2,14 @@
 
 namespace Nacha\Record;
 
+use Nacha\Field\TransactionCode;
+
 class CcdEntryTest extends \PHPUnit_Framework_TestCase {
 
 	public function testEntry_AllFields() {
 		// given
 		$entry = (new CcdEntry)
-			->setTransactionCode(27)
+			->setTransactionCode(TransactionCode::CHECKING_DEBIT)
 			->setReceivingDfiId('19101298')
 			->setCheckDigit(7)
 			->setReceivingDFiAccountNumber('46479999')
@@ -25,7 +27,7 @@ class CcdEntryTest extends \PHPUnit_Framework_TestCase {
 	public function testEntry_OptionalFields() {
 		// given
 		$entry = (new CcdEntry)
-			->setTransactionCode(27)
+			->setTransactionCode(TransactionCode::CHECKING_DEBIT)
 			->setReceivingDfiId('19101298')
 			->setCheckDigit(7)
 			->setReceivingDFiAccountNumber('46479999')

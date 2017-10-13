@@ -13,13 +13,11 @@ class CcdEntry extends Entry {
 	private $receivingCompanyId;
 	private $receivingCompanyName;
 	private $discretionaryData;
-	private $addendaRecordIndicator;
 
 	public function __construct() {
 		parent::__construct();
 
 		// defaults
-		$this->setAddendaRecordIndicator(0);
 		$this->setReceivingCompanyId('');
 		$this->setDiscretionaryData('');
 	}
@@ -38,9 +36,6 @@ class CcdEntry extends Entry {
 	}
 	public function getDiscretionaryData() {
 		return $this->discretionaryData;
-	}
-	public function getAddendaRecordIndicator() {
-		return $this->addendaRecordIndicator;
 	}
 
 	public function setCheckDigit($checkDigit) {
@@ -61,10 +56,6 @@ class CcdEntry extends Entry {
 	}
 	public function setDiscretionaryData($discretionaryData) {
 		$this->discretionaryData = new StringHelper($discretionaryData, 2);
-		return $this;
-	}
-	public function setAddendaRecordIndicator($addendaRecordIndicator) {
-		$this->addendaRecordIndicator = new Number($addendaRecordIndicator, 1);
 		return $this;
 	}
 

@@ -13,7 +13,6 @@ class DebitEntry extends Entry {
 	private $individualId;
 	private $idividualName;
 	private $discretionaryData;
-	private $addendaRecordIndicator;
 
 	public function __construct() {
 		parent::__construct();
@@ -21,7 +20,6 @@ class DebitEntry extends Entry {
 		// defaults
 		$this->setIndividualId('');
 		$this->setDiscretionaryData('');
-		$this->setAddendaRecordIndicator(0);
 	}
 
 	public function getCheckDigit() {
@@ -38,9 +36,6 @@ class DebitEntry extends Entry {
 	}
 	public function getDiscretionaryData() {
 		return $this->discretionaryData;
-	}
-	public function getAddendaRecordIndicator() {
-		return $this->addendaRecordIndicator;
 	}
 
 	public function setCheckDigit($checkDigit) {
@@ -61,10 +56,6 @@ class DebitEntry extends Entry {
 	}
 	public function setDiscretionaryData($discretionaryData) {
 		$this->discretionaryData = new StringHelper($discretionaryData, 2);
-		return $this;
-	}
-	public function setAddendaRecordIndicator($addendaRecordIndicator) {
-		$this->addendaRecordIndicator = new Number($addendaRecordIndicator, 1);
 		return $this;
 	}
 
