@@ -1,6 +1,6 @@
 {
 	"name": "nacha/file-generator",
-	"license": "GPL-3.0+",
+	"license": "MIT",
 	"authors": [{
 		"name": "Philip Whitt",
 		"email": "philipwhitt88@gmail.com",
