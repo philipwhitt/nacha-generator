@@ -1,5 +1,5 @@
 {
-	"name": "nacha/file-generator",
+	"name": "cvtrust/nacha-file-generator",
 	"license": "MIT",
 	"authors": [{
 		"name": "Philip Whitt",
