@@ -117,4 +117,23 @@ class BatchTest extends \PHPUnit_Framework_TestCase {
 		);
 	}
 
+	public function testFooterValuesFromHeader() {
+	    // when
+        $this->batch->getHeader()
+            ->setOriginatingDFiId('')
+            ->setCompanyId('A419871234');
+
+        // then
+        $output = (string)$this->batch;
+
+        $this->assertEquals((string)$this->batch->getHeader()->getServiceClassCode(), Batch::MIXED);
+        $this->assertEquals(
+            "5200MY BEST COMP    INCLUDES OVERTIME   1419871234PPDPAYROLL   0602  0112     2010212340000001\n".
+            "62209101298746479999         0000060000Location 23    Best Co 23            S 0099363400000001\n".
+            "62709101298746479999         0000055000SomePerson1255 Alex Dubrovsky        S 0999363400000002\n".
+            "82000000020018202596000000055000000000060000A419871234                                 0000001",
+            $output
+        );
+    }
+
 }

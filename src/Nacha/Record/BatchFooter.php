@@ -13,7 +13,7 @@ class BatchFooter {
 	private $entryHash;
 	private $totalDebitAmount;
 	private $totalCreditAmount;
-	private $companyIdNumber;
+	private $companyId;
 	private $messageAuthenticationCode;
 	private $reserved;
 	private $originatingDfiId;
@@ -48,8 +48,8 @@ class BatchFooter {
 		$this->totalCreditAmount = new Number($totalCreditAmount, 12);
 		return $this;
 	}
-	public function setCompanyIdNumber($companyIdNumber) {
-		$this->companyIdNumber = new Number($companyIdNumber, 10);
+	public function setCompanyId($companyId) {
+		$this->companyId = new StringHelper($companyId, 10);
 		return $this;
 	}
 	public function setMessageAuthenticationCode($messageAuthenticationCode) {
@@ -57,7 +57,7 @@ class BatchFooter {
 		return $this;
 	}
 	public function setOriginatingDfiId($originatingDfiId) {
-		$this->originatingDfiId = new Number($originatingDfiId, 8);
+		$this->originatingDfiId = new StringHelper($originatingDfiId, 8);
 		return $this;
 	}
 	public function setBatchNumber($batchNumber) {
@@ -72,7 +72,7 @@ class BatchFooter {
 			$this->entryHash.
 			$this->totalDebitAmount.
 			$this->totalCreditAmount.
-			$this->companyIdNumber.
+			$this->companyId.
 			$this->messageAuthenticationCode.
 			$this->reserved.
 			$this->originatingDfiId.
