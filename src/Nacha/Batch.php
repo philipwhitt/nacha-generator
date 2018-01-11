@@ -227,7 +227,7 @@ class Batch {
 		$footer = (new BatchFooter)
 			->setEntryAddendaCount($this->getTotalEntryCount())
 			->setEntryHash($this->getEntryHash())
-			->setCompanyIdNumber((string)$this->header->getCompanyId())
+			->setCompanyId((string)$this->header->getCompanyId())
 			->setOriginatingDfiId((string)$this->header->getOriginatingDFiId())
 			->setBatchNumber((string)$this->getHeader()->getBatchNumber())
 			->setTotalDebitAmount($this->getTotalDebitAmount())
